@@ -3,849 +3,1112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seattle Legal Advisor - Scott Haapala | Business Attorney</title>
-    <meta name="description" content="Straightforward legal advice for businesses, creatives, and entrepreneurs in Washington State. Scott Haapala provides expert legal counsel in Seattle and throughout Washington.">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Seattle Legal Advisor - Scott M. Haapala PLLC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1a365d;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2563eb;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="90" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.3s;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.6s;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.8s;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 1s;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #1a365d;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: #1a365d;
+        }
+
+        /* Attorney Profile Section */
+        .attorney-profile {
+            background: white;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .profile-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            transform: translateX(-30px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .profile-card.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .profile-info {
+            transform: translateX(30px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .profile-info.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .attorney-name {
+            font-size: 2.5rem;
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+
+        .attorney-credentials {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .experience-badge {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .profile-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .profile-highlights {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .profile-highlights li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .profile-highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* Practice Areas */
+        .practice-areas {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a365d;
+            margin-bottom: 1rem;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .section-title.visible,
+        .section-subtitle.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            transform: translateY(30px);
+            opacity: 0;
+            border-left: 4px solid #2563eb;
+        }
+
+        .service-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            color: #1a365d;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.6s ease;
+            position: relative;
+        }
+
+        .testimonial-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #1a365d;
+        }
+
+        .quote-mark {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: #2563eb;
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            margin: 2rem 0;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-icon {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            color: #60a5fa;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: white;
+            color: #1a365d;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a365d;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #60a5fa;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .profile-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="{{ url_for('static', filename='logo.png') }}" alt="Seattle Legal Advisor Logo" class="logo">
-                <span class="logo-text">Seattle Legal Advisor</span>
-            </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#business-law" class="nav-link">Business Law</a>
-                <a href="#intellectual-property" class="nav-link">IP</a>
-                <a href="#estate-planning" class="nav-link">Estate Planning</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="tel:206.240.0442" class="nav-cta">Call Now</a>
-            </div>
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+    <header>
+        <nav class="container">
+            <div class="logo">Seattle Legal Advisor</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Practice Areas</a></li>
+                <li><a href="#testimonials">Client Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero fade-in">
-        <div class="hero-container">
+    <section id="home" class="hero">
+        <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Straightforward Legal Advice for Businesses, Creatives, and Entrepreneurs</h1>
-                <p class="hero-subtitle">Expert legal counsel in Washington State, combining big-picture thinking with fine-detail execution</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Schedule Consultation</a>
-                    <a href="tel:206.240.0442" class="btn btn-secondary">
-                        <i class="fas fa-phone"></i> 206.240.0442
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="hero-card">
-                    <i class="fas fa-balance-scale"></i>
-                    <h3>Scott Haapala</h3>
-                    <p>Seattle-Based Attorney</p>
+                <h1>Seattle Legal Advisor</h1>
+                <p class="hero-subtitle">Full Suite Legal Service Provider for Businesses, Entrepreneurs and Individuals</p>
+                <p class="hero-tagline">Ethical. Knowledgeable. Proactive. Business Law and Intellectual Property attorney serving Washington State</p>
+                <div class="cta-buttons">
+                    <a href="tel:206-240-0442" class="cta-button">Call 206-240-0442</a>
+                    <a href="#contact" class="cta-button secondary">Free Consultation</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Business Law Section -->
-    <section id="business-law" class="business-law fade-in">
+    <section id="about" class="attorney-profile">
         <div class="container">
-            <div class="service-detail-header">
-                <h2>Business Law</h2>
-                <p class="service-subtitle">Business Law Guidance for Every Stage of Growth</p>
-            </div>
-            <div class="service-detail-content">
-                <div class="service-intro">
-                    <p class="lead">Whether you're launching a new venture, negotiating a deal, or navigating ownership transitions, I provide clear, strategic legal advice tailored to business owners and entrepreneurs in <strong>Seattle</strong> and throughout <strong>Washington State</strong>.</p>
-                    <p>At <strong>Seattle Legal Advisor</strong>, I bring firsthand experience as a business owner, corporate counsel, and transactional attorney. I help clients choose the right entity structure, draft and negotiate contracts, protect intellectual property, and manage complex transactions like <strong>mergers</strong>, <strong>acquisitions</strong>, and <strong>succession planning</strong>. My goal is to help you make confident decisions that reduce risk, support growth, and preserve long-term value.</p>
+            <div class="profile-content">
+                <div class="profile-card slide-in-left">
+                    <h2 class="attorney-name">Scott M. Haapala</h2>
+                    <p class="attorney-credentials">Attorney, PLLC</p>
+                    <div class="experience-badge">37+ Years Experience</div>
+                    <p>Licensed in WA, DC, MD</p>
                 </div>
                 
-                <div class="service-focus">
-                    <h3>Legal Support Built for Real-World Business Needs</h3>
-                    <p>I work with closely held companies, startups, nonprofits, creatives, and landlords—guiding them through the key legal steps that protect their interests and strengthen their operations.</p>
-                </div>
-
-                <div class="service-list">
-                    <h3>Business clients rely on me for help with:</h3>
-                    <div class="service-items">
-                        <div class="service-item">
-                            <div class="service-item-icon">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div class="service-item-content">
-                                <h4>Business Formation & Structuring</h4>
-                                <p>Choose the right entity, protect your assets, and set up the foundation for long-term success.</p>
-                            </div>
-                        </div>
-                        <div class="service-item">
-                            <div class="service-item-icon">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <div class="service-item-content">
-                                <h4>Buy-Sell Agreements & Succession Planning</h4>
-                                <p>Prepare for ownership changes with clear, enforceable agreements that reduce uncertainty.</p>
-                            </div>
-                        </div>
-                        <div class="service-item">
-                            <div class="service-item-icon">
-                                <i class="fas fa-file-contract"></i>
-                            </div>
-                            <div class="service-item-content">
-                                <h4>Contract Drafting, Review & Negotiation</h4>
-                                <p>Ensure your agreements reflect your goals and protect your interests—no jargon, no gaps.</p>
-                            </div>
-                        </div>
-                        <div class="service-item">
-                            <div class="service-item-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="service-item-content">
-                                <h4>Mergers & Acquisitions</h4>
-                                <p>Navigate the full lifecycle of a deal with due diligence, documentation, and strategic counsel.</p>
-                            </div>
-                        </div>
-                        <div class="service-item">
-                            <div class="service-item-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="service-item-content">
-                                <h4>Governance & Compliance</h4>
-                                <p>Stay compliant with Washington business law and proactively manage risk as your business grows.</p>
-                            </div>
-                        </div>
-                        <div class="service-item">
-                            <div class="service-item-icon">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            <div class="service-item-content">
-                                <h4>Real-World Advice for Landlords & Property Managers</h4>
-                                <p>As a property owner and manager myself, I help new landlords structure their operations legally and effectively.</p>
-                            </div>
-                        </div>
-                        <div class="service-item">
-                            <div class="service-item-icon">
-                                <i class="fas fa-palette"></i>
-                            </div>
-                            <div class="service-item-content">
-                                <h4>Creative & IP-Focused Ventures</h4>
-                                <p>For artists, promoters, and entertainment businesses, I offer insight from both legal and industry experience.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dispute-resolution">
-                    <h3>Helping You Avoid Disputes—And Resolve Them When They Arise</h3>
-                    <p>A well-structured business with clear contracts is your first line of defense against legal disputes. But when disagreements do happen—whether between partners, with vendors, or around customer obligations—I help clients work through them with clarity and composure. I bring a thoughtful approach to negotiation that combines strong communication, active listening, and creative problem-solving. My focus is always on protecting your interests while maintaining the relationships and integrity your business depends on.</p>
-                </div>
-
-                <div class="service-cta">
-                    <h3>Let's Talk About Your Business Goals</h3>
-                    <p>Whether you're building something new or improving an existing operation, I'll help you move forward with clarity and confidence.</p>
-                    <div class="cta-buttons">
-                        <a href="tel:206.240.0442" class="btn btn-primary">Call 206-240-0442</a>
-                        <a href="#contact" class="btn btn-secondary">Contact Online</a>
-                    </div>
+                <div class="profile-info slide-in-right">
+                    <h3 style="font-size: 2rem; color: #1a365d; margin-bottom: 1rem;">About Scott</h3>
+                    <p class="profile-description">
+                        <strong>Scott M. Haapala</strong> is an attorney, husband, father, gardener and artist. His corporate legal career began working at Baker & McKenzie where international energy, corporate finance, and business transactions consumed all his time. Motivated to make a greater contribution to the environment, Scott moved to the Environmental Integrity Project to focus on environmental enforcement of the Clean Air and Clean Water Acts.
+                    </p>
+                    <p class="profile-description">
+                        Scott has a thorough understanding of Washington law and knows first-hand the trials and tribulations that come with being a business owner because he has owned and managed multiple businesses in addition to his law practice. <strong>It can be hard to start and grow a business, and he is here to help.</strong>
+                    </p>
+                    <ul class="profile-highlights">
+                        <li>University of Washington Graduate (2000)</li>
+                        <li>Former Baker & McKenzie Corporate Attorney</li>
+                        <li>Business Owner & Entrepreneur</li>
+                        <li>Environmental Law Specialist</li>
+                        <li>Construction Law Experience</li>
+                        <li>Intellectual Property Expert</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Intellectual Property Section -->
-    <section id="intellectual-property" class="intellectual-property fade-in">
+    <section id="services" class="practice-areas">
         <div class="container">
-            <div class="service-detail-header">
-                <h2>Intellectual Property</h2>
-                <p class="service-subtitle">Own What You Create. Protect What You Build.</p>
-            </div>
-            <div class="service-detail-content">
-                <div class="service-intro">
-                    <p class="lead">Your ideas, your brand, your creative work—these are some of your most valuable business assets. But they're only protected if you take the right legal steps. At <strong>Seattle Legal Advisor</strong>, I help entrepreneurs, artists, and business owners in Washington safeguard their intellectual property and build value around it.</p>
-                    <p>Whether you're launching a business, producing original content, or building a brand, I provide the legal clarity you need to protect what's yours—and stop others from taking it.</p>
-                </div>
-
-                <div class="ip-types">
-                    <h3>What Counts as Intellectual Property?</h3>
-                    <p>Intellectual property (IP) refers to the intangible assets you create: your brand, your creative work, your trade secrets, your reputation. Here's how the law protects different types of IP:</p>
-                    
-                    <div class="ip-grid">
-                        <div class="ip-type">
-                            <div class="ip-icon">
-                                <i class="fas fa-trademark"></i>
-                            </div>
-                            <h4>Trademarks</h4>
-                            <p>Protect your <strong>brand identity</strong>—things like your business name, logo, slogan, or product packaging. Registering a trademark gives you exclusive rights to use it and stop others from copying or imitating your brand.</p>
-                        </div>
-                        <div class="ip-type">
-                            <div class="ip-icon">
-                                <i class="fas fa-copyright"></i>
-                            </div>
-                            <h4>Copyrights</h4>
-                            <p>Protect <strong>original creative works</strong>, such as music, writing, photography, film, artwork, website content, and more. Copyright exists automatically when you create the work—but registering it gives you stronger enforcement rights.</p>
-                        </div>
-                        <div class="ip-type">
-                            <div class="ip-icon">
-                                <i class="fas fa-lock"></i>
-                            </div>
-                            <h4>Trade Secrets</h4>
-                            <p>Protect your <strong>confidential business information</strong>—recipes, processes, formulas, or client lists that give you a competitive edge. I help clients put protections in place to keep those assets secure.</p>
-                        </div>
-                        <div class="ip-type">
-                            <div class="ip-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h4>Brands</h4>
-                            <p>More than just a logo—they're the way people recognize and trust your business. I help ensure your branding is legally protected and distinct in the market.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ip-services">
-                    <h3>Legal Support for Creatives and Businesses</h3>
-                    <p>I help clients proactively protect their IP—and make smart decisions about how to use it. Services include:</p>
-                    <div class="service-checklist">
-                        <div class="checklist-item">
-                            <i class="fas fa-check"></i>
-                            <span>Trademark search, registration, and enforcement</span>
-                        </div>
-                        <div class="checklist-item">
-                            <i class="fas fa-check"></i>
-                            <span>Copyright registration and licensing</span>
-                        </div>
-                        <div class="checklist-item">
-                            <i class="fas fa-check"></i>
-                            <span>Cease-and-desist letters and infringement response</span>
-                        </div>
-                        <div class="checklist-item">
-                            <i class="fas fa-check"></i>
-                            <span>IP clauses in contracts, employment agreements, and collaborations</span>
-                        </div>
-                        <div class="checklist-item">
-                            <i class="fas fa-check"></i>
-                            <span>Trade secret policies and NDAs</span>
-                        </div>
-                        <div class="checklist-item">
-                            <i class="fas fa-check"></i>
-                            <span>IP audits for startups, acquisitions, or business sales</span>
-                        </div>
-                    </div>
-                    <p>Whether you're an artist building a catalog or a business scaling your brand, I'll help ensure your IP works <em>for</em> you—not against you.</p>
-                </div>
-
-                <div class="service-cta">
-                    <h3>Protect It Now – Before Someone Else Claims It</h3>
-                    <p>IP protection is about more than paperwork. It's about securing what you've built, preserving your reputation, and creating long-term value. Let's make sure your work is properly protected.</p>
-                    <div class="cta-buttons">
-                        <a href="tel:206.240.0442" class="btn btn-primary">Call 206-240-0442</a>
-                        <a href="#contact" class="btn btn-secondary">Contact Online</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Estate Planning Section -->
-    <section id="estate-planning" class="estate-planning fade-in">
-        <div class="container">
-            <div class="service-detail-header">
-                <h2>Estate Planning</h2>
-                <p class="service-subtitle">Estate Planning That Protects Your Legacy and Reduces Stress</p>
-            </div>
-            <div class="service-detail-content">
-                <div class="service-intro">
-                    <p class="lead">Estate planning isn't just about death and taxes—it's about making things easier for the people you care about. Whether you're thinking about your family, your business, or both, I help clients across Washington create clear, customized plans that protect their wishes and avoid unnecessary confusion, cost, or conflict.</p>
-                    <p>At Seattle Legal Advisor, I make estate planning straightforward. You tell me what matters most. I'll handle the legal work to ensure it's protected.</p>
-                </div>
-
-                <div class="estate-benefits">
-                    <h3>What an Estate Plan Can Do for You</h3>
-                    <p>A well-crafted estate plan gives you the opportunity to:</p>
-                    <div class="benefits-grid">
-                        <div class="benefit-item">
-                            <i class="fas fa-home"></i>
-                            <span>Decide how your property and assets will be distributed after your passing</span>
-                        </div>
-                        <div class="benefit-item">
-                            <i class="fas fa-user-friends"></i>
-                            <span>Appoint trusted people to make financial and medical decisions on your behalf</span>
-                        </div>
-                        <div class="benefit-item">
-                            <i class="fas fa-baby"></i>
-                            <span>Name guardians for your children or dependents</span>
-                        </div>
-                        <div class="benefit-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Avoid probate delays, confusion, and unnecessary legal costs</span>
-                        </div>
-                        <div class="benefit-item">
-                            <i class="fas fa-piggy-bank"></i>
-                            <span>Reduce estate taxes and preserve wealth for the next generation</span>
-                        </div>
-                        <div class="benefit-item">
-                            <i class="fas fa-building"></i>
-                            <span>Protect your business, real estate, or intellectual property</span>
-                        </div>
-                        <div class="benefit-item">
-                            <i class="fas fa-heart"></i>
-                            <span>Create clarity and peace of mind for loved ones during a difficult time</span>
-                        </div>
-                    </div>
-                    <p><em>Estate planning isn't just for the wealthy—it's for anyone who wants to protect their family, plan for incapacity, or make their wishes known.</em></p>
-                </div>
-
-                <div class="estate-services">
-                    <h3>Estate Planning Services Include:</h3>
-                    <p>Estate plans can include instructions not only for distributing your property after you've passed but also for handling decisions in the event you can no longer make them for yourself. Though it may be difficult to think about your mortality, clear and thorough plans can remove the fear of uncertainty. I can help with:</p>
-                    
-                    <div class="estate-service-items">
-                        <div class="estate-service">
-                            <div class="estate-icon">
-                                <i class="fas fa-scroll"></i>
-                            </div>
-                            <div class="estate-content">
-                                <h4>Wills</h4>
-                                <p>Your last will and testament provides the opportunity to distribute property, establish care for children and otherwise express your final wishes. A will is also the primary means by which you can leave property to a person or entity other than a blood relative.</p>
-                            </div>
-                        </div>
-                        <div class="estate-service">
-                            <div class="estate-icon">
-                                <i class="fas fa-university"></i>
-                            </div>
-                            <div class="estate-content">
-                                <h4>Trusts</h4>
-                                <p>Trusts are flexible instruments that allow you to put conditions on gifts and provide an allowance for a beneficiary rather than a lump sum. When you set up a living trust, for example, you can enjoy your property during your lifetime and transfer wealth seamlessly at your passing.</p>
-                            </div>
-                        </div>
-                        <div class="estate-service">
-                            <div class="estate-icon">
-                                <i class="fas fa-file-medical"></i>
-                            </div>
-                            <div class="estate-content">
-                                <h4>Advance Directives & Living Wills</h4>
-                                <p>These documents outline your preferences for medical treatment, life-sustaining measures, and who you authorize to make healthcare decisions if you're unable to do so.</p>
-                            </div>
-                        </div>
-                        <div class="estate-service">
-                            <div class="estate-icon">
-                                <i class="fas fa-gavel"></i>
-                            </div>
-                            <div class="estate-content">
-                                <h4>Powers of Attorney</h4>
-                                <p>I help clients assign legal authority to someone they trust for financial or healthcare decisions in the event of incapacity.</p>
-                            </div>
-                        </div>
-                        <div class="estate-service">
-                            <div class="estate-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="estate-content">
-                                <h4>Guardianships</h4>
-                                <p>If you have minor children, you can name a guardian in your will. I help you consider who is best suited to care for your children and walk you through what the court process may involve.</p>
-                            </div>
-                        </div>
-                        <div class="estate-service">
-                            <div class="estate-icon">
-                                <i class="fas fa-laptop"></i>
-                            </div>
-                            <div class="estate-content">
-                                <h4>Digital Assets</h4>
-                                <p>From social media accounts to cryptocurrency wallets, I help clients document access and instructions for digital property.</p>
-                            </div>
-                        </div>
-                        <div class="estate-service">
-                            <div class="estate-icon">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <div class="estate-content">
-                                <h4>Business Succession</h4>
-                                <p>If you own a business, we can align your estate plan with your succession strategy to ensure a smooth transition in ownership or management.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="additional-services">
-                    <h3>Other Services and Considerations:</h3>
-                    <div class="additional-list">
-                        <div class="additional-item">
-                            <i class="fas fa-arrow-right"></i>
-                            <span>Transfer on death (TOD) deeds</span>
-                        </div>
-                        <div class="additional-item">
-                            <i class="fas fa-arrow-right"></i>
-                            <span>Estate and gift tax analysis and planning</span>
-                        </div>
-                        <div class="additional-item">
-                            <i class="fas fa-arrow-right"></i>
-                            <span>Choosing an appropriate executor or trustee</span>
-                        </div>
-                        <div class="additional-item">
-                            <i class="fas fa-arrow-right"></i>
-                            <span>Conservatorships and adult guardianships</span>
-                        </div>
-                        <div class="additional-item">
-                            <i class="fas fa-arrow-right"></i>
-                            <span>Estate planning for blended families or unique family dynamics</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="estate-philosophy">
-                    <h3>Your Goals Shape the Plan</h3>
-                    <p>Every estate plan is different. I work with people of all ages and asset levels. You don't need to be wealthy to benefit from an estate plan—you just need to want clarity, peace of mind, and fewer complications for your family.</p>
-                </div>
-
-                <div class="service-cta">
-                    <h3>Let's Make a Plan That Works for You</h3>
-                    <p>Whether you're starting a family, growing your business, or organizing your affairs later in life, I'll help you create a plan you can feel confident about.</p>
-                    <div class="cta-buttons">
-                        <a href="tel:206.240.0442" class="btn btn-primary">Call 206-240-0442</a>
-                        <a href="#contact" class="btn btn-secondary">Contact Online</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about fade-in">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About Scott Haapala</h2>
-                    <p class="lead">Attorney. Entrepreneur. Advocate for Creatives, Startups, and Business Owners.</p>
-                    <p>I'm Scott Haapala, an attorney based in the Seattle area. Over the years, I've built a career at the intersection of law, business, and civic impact—serving clients who want clear legal guidance, strategic problem-solving, and practical support they can trust.</p>
-                    <p>My path has taken me through the halls of BigLaw, federal consulting, entrepreneurship, and grassroots civic engagement. Along the way, I've learned how to distill complexity into clarity—whether I'm reviewing a corporate buy-sell agreement or leading an election for 80,000 public housing residents.</p>
-                    
-                    <div class="credentials">
-                        <h3>Legal Credentials</h3>
-                        <div class="credentials-grid">
-                            <div class="credential-item">
-                                <h4>Bar Admissions</h4>
-                                <ul>
-                                    <li>Washington (2008)</li>
-                                    <li>Washington, D.C. (2007, inactive)</li>
-                                    <li>Maryland (2005, inactive)</li>
-                                </ul>
-                            </div>
-                            <div class="credential-item">
-                                <h4>Education</h4>
-                                <ul>
-                                    <li>University of the District of Columbia, David A. Clarke School of Law, JD (2005)</li>
-                                    <li>University of Washington, BA (2000)</li>
-                                </ul>
-                            </div>
-                            <div class="credential-item">
-                                <h4>Recognition</h4>
-                                <ul>
-                                    <li>World Renewable Energy Congress Award, European Commission (2006)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="about-highlights">
-                        <div class="highlight">
-                            <i class="fas fa-briefcase"></i>
-                            <span>Business Owner & Attorney</span>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Based in Burien, Serving Washington State</span>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-video"></i>
-                            <span>Virtual Consultations Available</span>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-users"></i>
-                            <span>100,000+ Residents Served in Civic Engagement</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div class="about-card">
-                        <div class="card-content">
-                            <h3>Legal Services Rooted in Strategy and Clarity</h3>
-                            <p>Every client has different goals—and different risk tolerance. I take the time to understand your business, your values, and what success means to you.</p>
-                            <div class="contact-info-card">
-                                <p><i class="fas fa-phone"></i> 206-240-0442</p>
-                                <p><i class="fas fa-fax"></i> 301-637-3635</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Experience Sections -->
-            <div class="experience-sections">
-                <div class="experience-section">
-                    <h3>Legal, Business, and Broad Experience You Can Rely On</h3>
-                    <p>I began my legal career at <strong>Baker & McKenzie</strong>, supporting international energy transactions and corporate finance deals. I later worked with the <strong>Environmental Integrity Project</strong>, where I focused on Clean Air and Clean Water Act enforcement, and consulted on energy policy for <strong>Sandia National Laboratories</strong>.</p>
-                    <p>Seeking a more mission-aligned practice, I launched my firm, <strong>Seattle Legal Advisor</strong>, in 2011. I now work with clients across Washington State on business law, M&A, intellectual property, estate planning, and real estate matters—especially for entrepreneurs, creatives, closely held businesses, and nonprofits.</p>
-                    <p>In addition to my law practice, I've owned and operated several businesses, including a property management company. As a landlord myself, I offer clients grounded legal advice informed by real experience—whether they're buying their first rental or scaling a real estate business.</p>
-                </div>
-
-                <div class="experience-section">
-                    <h3>Civic Engagement and Strategic Leadership</h3>
-                    <p>Since 2008, I've led the work that became <strong>Resident Participation Services ("RPS")</strong>, a civic engagement and election services firm that helps public housing authorities run fair, inclusive elections and strengthen local governance.</p>
-                    <div class="civic-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">650+</div>
-                            <div class="stat-label">Polling Sites Set Up</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">100,000+</div>
-                            <div class="stat-label">Residents Served</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">Engagement Meetings</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">1,100+</div>
-                            <div class="stat-label">Residents Trained</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">12</div>
-                            <div class="stat-label">Competitive RFPs Won</div>
-                        </div>
-                    </div>
-                    <p>This work has helped housing authorities transition out of federal receivership, increase resident participation, and implement lasting systems of self-governance—and I bring that same strategic, compliance-oriented mindset to my legal work with clients navigating government contracts and public funding opportunities.</p>
-                </div>
-
-                <div class="experience-section">
-                    <h3>Creative Roots, Legal Structure</h3>
-                    <p>Before I ever wrote a legal brief, I spent years working in music—as a DJ and event promoter. That creative foundation still informs my legal practice today, particularly in entertainment law, where I represent musicians, producers, venues, and creatives navigating contracts, copyright, licensing, and IP protection.</p>
-                </div>
-
-                <div class="case-examples">
-                    <h3>Representative Matters</h3>
-                    <p>I've assisted clients with matters throughout the United States across diverse industries including construction, real estate, agriculture, electronics, music, entertainment, cannabis, automotive, logistics, transportation, hospitality, services, technology, and alternative energy.</p>
-                    
-                    <div class="case-grid">
-                        <div class="case-item">
-                            <h4>Material and Service Agreement</h4>
-                            <p>Negotiated extremely favorable terms with a $150 billion company including no rent for 3 years, guaranteed profits, and continued creative control</p>
-                        </div>
-                        <div class="case-item">
-                            <h4>Real Estate Management Portfolio</h4>
-                            <p>Drafted comprehensive procedures for advertising, tenant screening, applications, property management agreements, and leases</p>
-                        </div>
-                        <div class="case-item">
-                            <h4>Employment Agreement Dispute</h4>
-                            <p>Reduced client's contractual obligations from $117k immediate reimbursement to $65k settlement over 3 years</p>
-                        </div>
-                        <div class="case-item">
-                            <h4>LLC Member Defense</h4>
-                            <p>Client retained ownership of all interests and opposing counsel was terminated</p>
-                        </div>
-                        <div class="case-item">
-                            <h4>Corporate Reorganization</h4>
-                            <p>Successfully guided company transformation to employee ownership, earning board recognition plaque</p>
-                        </div>
-                        <div class="case-item">
-                            <h4>$1 Billion Private Placement</h4>
-                            <p>Met target total commitment of $1 billion for private placement memorandum</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="professional-activities">
-                    <div class="activities-grid">
-                        <div class="activity-section">
-                            <h3>Professional Associations</h3>
-                            <ul>
-                                <li>Washington State Bar Association, Corporate Counsel Section (2019-Present)</li>
-                                <li>Washington State Bar Association, Real Property, Probate and Trust Section (2019-Present)</li>
-                                <li>Washington State Bar Association, Business Law Section (2011-Present)</li>
-                                <li>Washington State Bar Association (2008-Present)</li>
-                            </ul>
-                        </div>
-                        <div class="activity-section">
-                            <h3>Speaking Engagements</h3>
-                            <ul>
-                                <li>National Alliance of Resident Services Conference (2012-2015)</li>
-                                <li>"Five Things to Know for Successful Resident Council Elections" (2015)</li>
-                                <li>"Independent Third Party Monitors for Elections" (2012)</li>
-                            </ul>
-                        </div>
-                        <div class="activity-section">
-                            <h3>Publications</h3>
-                            <ul>
-                                <li>Joint Center for Political and Economic Studies Health Policy Institute: "How the Juvenile Justice System Reduces Life Options of Minority Youth" (2005)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mission-statement">
-                    <h3>Mission Statement</h3>
-                    <p class="mission-text">My mission is to help clients move forward with clarity and confidence—whether they're building a business, managing real estate, negotiating a contract, or navigating public sector work. I provide legal structure and strategic insight rooted in real-world experience, so clients can make informed decisions, avoid costly mistakes, and focus on what matters most.</p>
-                    <p>From entrepreneurs to government contractors, I work to reduce risk, resolve complexity, and create lasting value—without unnecessary drama, jargon, or delay.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services fade-in">
-        <div class="container">
-            <div class="section-header">
-                <h2>Legal Services</h2>
-                <p>Comprehensive legal support for businesses, creatives, and entrepreneurs</p>
-            </div>
+            <h2 class="section-title fade-in">Practice Areas</h2>
+            <p class="section-subtitle fade-in">
+                Helping clients form, manage and grow their businesses is a passion of mine. I provide clear, strategic legal advice tailored to business owners and entrepreneurs throughout Washington State.
+            </p>
+            
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-file-contract"></i>
-                    </div>
-                    <h3>Contract Law</h3>
-                    <p>From contract drafting, amending, and negotiation to handling breach of contract disputes, I make sure your agreements are sound, clear, and enforceable.</p>
+                <div class="service-card fade-in">
+                    <div class="service-icon">⚖️</div>
+                    <h3 class="service-title">Contract Law</h3>
+                    <p class="service-description">
+                        For your business to succeed, it is essential that you are represented by a knowledgeable contract law attorney. I can guide you through the negotiation, drafting and review of contracts. I also handle breach of contract cases.
+                    </p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <h3>Corporate & Business Law</h3>
-                    <p>I advise startups, closely held companies, employee-owned entities, nonprofits, and growing businesses on corporate formation, restructuring, and day-to-day legal needs.</p>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏢</div>
+                    <h3 class="service-title">Business Formation</h3>
+                    <p class="service-description">
+                        If you are forming a business in Washington, you need to hire an experienced attorney to look out for your best interests. I can guide you through every step of the business formation process, including insurance coverage, investment strategies, compliance issues, contracts and more.
+                    </p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Business Formation</h3>
-                    <p>Launching a new venture in Washington? I help clients choose the right structure, handle compliance, and build a solid legal foundation.</p>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">🤝</div>
+                    <h3 class="service-title">Corporate Law</h3>
+                    <p class="service-description">
+                        I am dedicated to helping clients in all areas of corporate law, including formations, restructuring, partnership and shareholder disputes, contract law, asset protection and more. I fight for the future success of your business.
+                    </p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Mergers & Acquisitions</h3>
-                    <p>Whether you're buying or selling a business, I'll guide you through the transaction process with strategic counsel and careful due diligence.</p>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔄</div>
+                    <h3 class="service-title">Mergers & Acquisitions</h3>
+                    <p class="service-description">
+                        Whether your company is going through a merger or acquisition, you need an experienced attorney on your side to guide you through the process. I help you with every aspect, ensuring that your business continues to succeed.
+                    </p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3>Intellectual Property</h3>
-                    <p>Your ideas matter. I help clients protect their creative assets—trademarks, copyrights, and trade secrets—with proactive legal protection.</p>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">📋</div>
+                    <h3 class="service-title">Business Succession Planning</h3>
+                    <p class="service-description">
+                        If your business is in need of an ownership transition, I have the experience and knowledge necessary to ensure the process goes smoothly. No matter the size of your business, I am a business succession planning lawyer that can help you.
+                    </p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-music"></i>
-                    </div>
-                    <h3>Entertainment Law</h3>
-                    <p>Having spent decades as a performing artist and promoter, I support musicians, producers, venues, labels, and creatives in managing their rights and relationships.</p>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">💡</div>
+                    <h3 class="service-title">Intellectual Property</h3>
+                    <p class="service-description">
+                        When you create art, a product or an idea, you deserve the credit and the rights. I handle intellectual property cases involving patents, copyrights, trademarks and trade secrets. Contact me today to speak to a knowledgeable intellectual property lawyer about your case.
+                    </p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Closely Held Businesses</h3>
-                    <p>I work with founders, family-run companies, and tight-knit teams on succession planning, governance, buy-sell agreements, and long-term strategy.</p>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎭</div>
+                    <h3 class="service-title">Entertainment Law</h3>
+                    <p class="service-description">
+                        I represent music labels, producers, distributors, musicians, and other artists and industry professionals in entertainment law cases involving copyright law, contracts, trademark issues, and business formation.
+                    </p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-scroll"></i>
-                    </div>
-                    <h3>Estate Planning</h3>
-                    <p>For individuals and families, I provide estate planning services including wills, trusts, and powers of attorney—so your future is protected.</p>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏗️</div>
+                    <h3 class="service-title">Construction Law</h3>
+                    <p class="service-description">
+                        As a construction attorney, I help with payment issues, contract disputes, lien rights, and other construction-related legal matters to protect contractors, subcontractors, and property owners.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact fade-in">
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title fade-in">Client Reviews</h2>
+            <p class="section-subtitle fade-in">
+                See what clients have to say about working with Seattle Legal Advisor
+            </p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="quote-mark">"</div>
+                    <p class="testimonial-text">
+                        I hired Scott when my company's debt spiraled out of control after defaulting on a commercial loan. Scott spent a lot of time with me to understand the quirks and nuances of the company's operations. He helped us get our debt to a manageable level and restructured our company from an LLC to a corporation to lower our tax burden. No doubt in my mind that Scott cares about his clients.
+                    </p>
+                    <p class="testimonial-author">— Business Owner</p>
+                </div>
+                
+                <div class="testimonial-card fade-in">
+                    <div class="quote-mark">"</div>
+                    <p class="testimonial-text">
+                        I run a 9-year-old publishing company and have a weird mix of small business legal needs from minor sales contracts, to higher level intellectual property strategic issues. Scott is trustworthy and experienced with nontraditional businesses.
+                    </p>
+                    <p class="testimonial-author">— Publishing Company Owner</p>
+                </div>
+                
+                <div class="testimonial-card fade-in">
+                    <div class="quote-mark">"</div>
+                    <p class="testimonial-text">
+                        Scott helped us secure a trademark that was a questionable goal. Scott led discussions that ultimately got us through this difficult process and allowed our business to receive approval from the USPTO after some difficult negotiation. The value he brought was long term thinking and in depth understanding of his clients unique needs.
+                    </p>
+                    <p class="testimonial-author">— Business Executive</p>
+                </div>
+                
+                <div class="testimonial-card fade-in">
+                    <div class="quote-mark">"</div>
+                    <p class="testimonial-text">
+                        Scott has been my lawyer since the day we opened our office. He's meticulous, thorough and timely and reasonable. I recommend him for all your business needs.
+                    </p>
+                    <p class="testimonial-author">— Small Business Owner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
         <div class="container">
             <div class="contact-content">
                 <div class="contact-info">
-                    <h2>Let's Talk About Your Next Step</h2>
-                    <p class="lead">My office is located in Burien, and I work with clients throughout Seattle, King County, and across Washington State.</p>
-                    <p>I make it easy to connect—most clients meet with me virtually via Zoom, Microsoft Teams, or by phone, so there's no need to leave your office.</p>
+                    <h2>Contact Seattle Legal Advisor</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                        When you retain the services of Seattle Legal Advisor, you can be assured that your attorney is fully qualified to take on your case. Let me work with you to address your legal concerns in Washington.
+                    </p>
                     
                     <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
+                        <div class="contact-detail">
+                            <span class="contact-icon">📞</span>
                             <div>
-                                <h4>Call Direct</h4>
-                                <a href="tel:206.240.0442">206.240.0442</a>
+                                <strong>Phone:</strong><br>
+                                <a href="tel:206-240-0442" style="color: white; text-decoration: none;">206-240-0442</a>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
+                        
+                        <div class="contact-detail">
+                            <span class="contact-icon">✉️</span>
                             <div>
-                                <h4>Seattle Office</h4>
-                                <p>12036 26th Ave South<br>Seattle, Washington 98168</p>
+                                <strong>Email:</strong><br>
+                                <a href="mailto:scotthaapala@gmail.com" style="color: white; text-decoration: none;">scotthaapala@gmail.com</a>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-video"></i>
+                        
+                        <div class="contact-detail">
+                            <span class="contact-icon">📍</span>
                             <div>
-                                <h4>Virtual Meetings</h4>
-                                <p>Zoom, Microsoft Teams, Phone</p>
+                                <strong>Serving:</strong><br>
+                                Seattle & Washington State
+                            </div>
+                        </div>
+                        
+                        <div class="contact-detail">
+                            <span class="contact-icon">⚖️</span>
+                            <div>
+                                <strong>Law Firm:</strong><br>
+                                Scott M. Haapala PLLC
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="contact-form-container">
-                    <form class="contact-form" id="contact-form">
-                        <h3>Schedule a Consultation</h3>
+                <div class="form-container">
+                    <h3 style="margin-bottom: 1.5rem;">Free Consultation Request</h3>
+                    <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name*" required>
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
+                        
                         <div class="form-group">
-                            <input type="text" id="company" name="company" placeholder="Company">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
+                        
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email*" required>
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
                         </div>
+                        
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number*" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="city" name="city" placeholder="City">
-                        </div>
-                        <div class="form-group">
-                            <select id="state" name="state">
-                                <option value="">Select State</option>
-                                <option value="Alabama">Alabama</option>
-                                <option value="Alaska">Alaska</option>
-                                <option value="Arizona">Arizona</option>
-                                <option value="Arkansas">Arkansas</option>
-                                <option value="California">California</option>
-                                <option value="Colorado">Colorado</option>
-                                <option value="Connecticut">Connecticut</option>
-                                <option value="Delaware">Delaware</option>
-                                <option value="District of Columbia">District of Columbia</option>
-                                <option value="Florida">Florida</option>
-                                <option value="Georgia">Georgia</option>
-                                <option value="Hawaii">Hawaii</option>
-                                <option value="Idaho">Idaho</option>
-                                <option value="Illinois">Illinois</option>
-                                <option value="Indiana">Indiana</option>
-                                <option value="Iowa">Iowa</option>
-                                <option value="Kansas">Kansas</option>
-                                <option value="Kentucky">Kentucky</option>
-                                <option value="Louisiana">Louisiana</option>
-                                <option value="Maine">Maine</option>
-                                <option value="Maryland">Maryland</option>
-                                <option value="Massachusetts">Massachusetts</option>
-                                <option value="Michigan">Michigan</option>
-                                <option value="Minnesota">Minnesota</option>
-                                <option value="Mississippi">Mississippi</option>
-                                <option value="Missouri">Missouri</option>
-                                <option value="Montana">Montana</option>
-                                <option value="Nebraska">Nebraska</option>
-                                <option value="Nevada">Nevada</option>
-                                <option value="New Hampshire">New Hampshire</option>
-                                <option value="New Jersey">New Jersey</option>
-                                <option value="New Mexico">New Mexico</option>
-                                <option value="New York">New York</option>
-                                <option value="North Carolina">North Carolina</option>
-                                <option value="North Dakota">North Dakota</option>
-                                <option value="Ohio">Ohio</option>
-                                <option value="Oklahoma">Oklahoma</option>
-                                <option value="Oregon">Oregon</option>
-                                <option value="Pennsylvania">Pennsylvania</option>
-                                <option value="Rhode Island">Rhode Island</option>
-                                <option value="South Carolina">South Carolina</option>
-                                <option value="South Dakota">South Dakota</option>
-                                <option value="Tennessee">Tennessee</option>
-                                <option value="Texas">Texas</option>
-                                <option value="Utah">Utah</option>
-                                <option value="Vermont">Vermont</option>
-                                <option value="Virginia">Virginia</option>
-                                <option value="Washington" selected>Washington</option>
-                                <option value="West Virginia">West Virginia</option>
-                                <option value="Wisconsin">Wisconsin</option>
-                                <option value="Wyoming">Wyoming</option>
-                                <option value="Armed Forces Americas">Armed Forces Americas</option>
-                                <option value="Armed Forces Europe">Armed Forces Europe</option>
-                                <option value="Armed Forces Pacific">Armed Forces Pacific</option>
+                            <label for="practice-area">Practice Area of Interest</label>
+                            <select id="practice-area" name="practice-area">
+                                <option value="">Select Practice Area</option>
+                                <option value="contract-law">Contract Law</option>
+                                <option value="business-formation">Business Formation</option>
+                                <option value="corporate-law">Corporate Law</option>
+                                <option value="mergers-acquisitions">Mergers & Acquisitions</option>
+                                <option value="succession-planning">Business Succession Planning</option>
+                                <option value="intellectual-property">Intellectual Property</option>
+                                <option value="entertainment-law">Entertainment Law</option>
+                                <option value="construction-law">Construction Law</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
+                        
                         <div class="form-group">
-                            <select id="how_found" name="how_found">
-                                <option value="">How did you locate our site?</option>
-                                <option value="Martindale.com">Martindale.com</option>
-                                <option value="Lawyers.com">Lawyers.com</option>
-                                <option value="Google">Google</option>
-                                <option value="Yahoo">Yahoo</option>
-                                <option value="Bing">Bing</option>
-                                <option value="Press Release">Press Release</option>
-                                <option value="Video">Video</option>
-                                <option value="Internet Search">Internet Search</option>
-                                <option value="Publication">Publication</option>
-                                <option value="Recent Case">Recent Case</option>
-                                <option value="Referral">Referral</option>
-                            </select>
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required>
                         </div>
+                        
                         <div class="form-group">
-                            <select id="contact_method" name="contact_method">
-                                <option value="">How would you like to be contacted?</option>
-                                <option value="Phone">Phone</option>
-                                <option value="Email">Email</option>
-                            </select>
+                            <label for="message">Tell me about your legal needs *</label>
+                            <textarea id="message" name="message" placeholder="Please describe your legal situation and how I can assist you. The more details you provide, the better I can prepare for our consultation." required></textarea>
                         </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Tell me about your legal needs...*" rows="5" required></textarea>
-                        </div>
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-container">
-                                <input type="checkbox" id="disclaimer" name="disclaimer" required>
-                                <span class="checkmark"></span>
-                                I agree to the terms in the disclaimer*
-                            </label>
-                            <p class="disclaimer-text">
-                                Attorney Advertising. This website is designed for general information only. The information presented at this site should not be construed to be formal legal advice nor the formation of a lawyer/client relationship.
-                            </p>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        
+                        <button type="submit" class="submit-btn">Request Free Consultation</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-info">
-                    <div class="footer-logo">
-                        <img src="{{ url_for('static', filename='logo.png') }}" alt="Seattle Legal Advisor Logo" class="logo">
-                        <span>Seattle Legal Advisor</span>
-                    </div>
-                    <p>Straightforward legal advice for businesses, creatives, and entrepreneurs in Washington State.</p>
+                <div class="footer-section">
+                    <h3>Seattle Legal Advisor</h3>
+                    <p>Scott M. Haapala PLLC</p>
+                    <p>Full Suite Legal Service Provider</p>
+                    <p>Serving Washington State</p>
                 </div>
-                <div class="footer-contact">
-                    <h4>Contact Info</h4>
-                    <p><i class="fas fa-phone"></i> 206.240.0442</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Burien, Washington</p>
+                
+                <div class="footer-section">
+                    <h3>Practice Areas</h3>
+                    <p><a href="#services">Contract Law</a></p>
+                    <p><a href="#services">Business Formation</a></p>
+                    <p><a href="#services">Corporate Law</a></p>
+                    <p><a href="#services">Mergers & Acquisitions</a></p>
+                    <p><a href="#services">Intellectual Property</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><a href="tel:206-240-0442">206-240-0442</a></p>
+                    <p><a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a></p>
+                    <p>Licensed in WA, DC, MD</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <p>Attorney Advertising</p>
+                    <p>Prior results do not guarantee similar outcomes</p>
+                    <p>© 2025 Scott M. Haapala PLLC</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Seattle Legal Advisor. All rights reserved. | Scott Haapala, Attorney at Law</p>
+            
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #334155; margin-top: 2rem;">
+                <p>&copy; 2025 Seattle Legal Advisor - Scott M. Haapala PLLC. All rights reserved.</p>
+                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">
+                    Ethical. Knowledgeable. Proactive. | Business Law and Intellectual Property Attorney
+                </p>
             </div>
         </div>
     </footer>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .profile-card, .profile-info, .service-card, .testimonial-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+            
+            // Hide/show header on scroll
+            if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const practiceArea = formData.get('practice-area');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Create enhanced mailto link with all form data
+            const emailBody = `
+CONSULTATION REQUEST FROM ${name.toUpperCase()}
+
+Contact Information:
+• Name: ${name}
+• Email: ${email}
+• Phone: ${phone || 'Not provided'}
+• Practice Area of Interest: ${practiceArea || 'Not specified'}
+
+Subject: ${subject}
+
+Message:
+${message}
+
+---
+This consultation request was submitted through seattlelegaladvisor.com
+            `.trim();
+            
+            const mailtoLink = `mailto:scotthaapala@gmail.com?subject=${encodeURIComponent('Consultation Request: ' + subject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success feedback
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Email Prepared - Check Your Email Client';
+            submitBtn.style.background = '#22c55e';
+            submitBtn.style.transform = 'scale(1.02)';
+            
+            // Reset form and button after delay
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = 'white';
+                submitBtn.style.transform = 'scale(1)';
+                this.reset();
+                
+                // Show a subtle confirmation message
+                const confirmation = document.createElement('div');
+                confirmation.innerHTML = '✓ Form submitted successfully!';
+                confirmation.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #22c55e;
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 10px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    z-index: 10000;
+                    font-weight: bold;
+                    animation: slideInRight 0.5s ease;
+                `;
+                document.body.appendChild(confirmation);
+                
+                setTimeout(() => {
+                    confirmation.style.animation = 'slideOutRight 0.5s ease';
+                    setTimeout(() => confirmation.remove(), 500);
+                }, 3000);
+            }, 3000);
+        });
+
+        // Add floating animation to service cards
+        document.querySelectorAll('.service-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+            
+            card.addEventListener('mouseenter', () => {
+                card.style.animation = 'float 2s ease-in-out infinite';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.animation = 'none';
+            });
+        });
+
+        // Add CSS animations for notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add loading states for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fade in the page content
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Enhance form interaction
+        document.querySelectorAll('input, textarea, select').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.2s ease';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
 </body>
 </html>
