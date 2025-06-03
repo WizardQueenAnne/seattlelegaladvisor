@@ -73,10 +73,22 @@ contactForm.addEventListener('submit', async (e) => {
     const formData = new FormData(contactForm);
     const data = {
         name: formData.get('name'),
+        company: formData.get('company'),
         email: formData.get('email'),
         phone: formData.get('phone'),
-        message: formData.get('message')
+        city: formData.get('city'),
+        state: formData.get('state'),
+        how_found: formData.get('how_found'),
+        contact_method: formData.get('contact_method'),
+        message: formData.get('message'),
+        disclaimer: formData.get('disclaimer')
     };
+
+    // Validate required fields
+    if (!data.name || !data.email || !data.phone || !data.message || !data.disclaimer) {
+        showMessage('Please fill in all required fields and agree to the disclaimer.', 'error');
+        return;
+    }
 
     const submitButton = contactForm.querySelector('button[type="submit"]');
     const originalText = submitButton.textContent;
@@ -104,7 +116,7 @@ contactForm.addEventListener('submit', async (e) => {
             showMessage(result.message, 'error');
         }
     } catch (error) {
-        showMessage('There was an error sending your message. Please try again or call directly.', 'error');
+        showMessage('There was an error sending your message. Please try again or call directly at 206-240-0442.', 'error');
     } finally {
         // Reset button
         submitButton.textContent = originalText;
