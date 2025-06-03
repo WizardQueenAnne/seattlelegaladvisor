@@ -1,1 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seattle Legal Advisor - Scott Haapala | Business Attorney</title>
+    <meta name="description" content="Straightforward legal advice for businesses, creatives, and entrepreneurs in Washington State. Scott Haapala provides expert legal counsel in Seattle and throughout Washington.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Seattle Legal Advisor Logo" class="logo">
+                <span class="logo-text">Seattle Legal Advisor</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="tel:206.240.0442" class="nav-cta">Call Now</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Hero Section -->
+    <section id="home" class="hero fade-in">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Straightforward Legal Advice for Businesses, Creatives, and Entrepreneurs</h1>
+                <p class="hero-subtitle">Expert legal counsel in Washington State, combining big-picture thinking with fine-detail execution</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Schedule Consultation</a>
+                    <a href="tel:206.240.0442" class="btn btn-secondary">
+                        <i class="fas fa-phone"></i> 206.240.0442
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Scott Haapala</h3>
+                    <p>Seattle-Based Attorney</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about fade-in">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Scott Haapala</h2>
+                    <p class="lead">I'm Scott Haapala, a Seattle-based attorney who helps individuals and businesses navigate legal matters with clarity and confidence.</p>
+                    <p>Whether you're forming a new company, negotiating a contract, or preparing to sell your business, I offer practical, responsive legal support tailored to your specific goals.</p>
+                    <p>At Seattle Legal Advisor, I bring firsthand experience as both a lawyer and business owner. I've started, run, and advised businesses across industries—and I know how important it is to have someone in your corner who can explain the legal fine print and protect your interests.</p>
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Business Owner & Attorney</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Based in Burien, Serving Washington State</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-video"></i>
+                            <span>Virtual Consultations Available</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="about-card">
+                        <div class="card-content">
+                            <h3>Legal Services Rooted in Strategy and Clarity</h3>
+                            <p>Every client has different goals—and different risk tolerance. I take the time to understand your business, your values, and what success means to you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services fade-in">
+        <div class="container">
+            <div class="section-header">
+                <h2>Legal Services</h2>
+                <p>Comprehensive legal support for businesses, creatives, and entrepreneurs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Contract Law</h3>
+                    <p>From contract drafting, amending, and negotiation to handling breach of contract disputes, I make sure your agreements are sound, clear, and enforceable.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Corporate & Business Law</h3>
+                    <p>I advise startups, closely held companies, employee-owned entities, nonprofits, and growing businesses on corporate formation, restructuring, and day-to-day legal needs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Business Formation</h3>
+                    <p>Launching a new venture in Washington? I help clients choose the right structure, handle compliance, and build a solid legal foundation.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Mergers & Acquisitions</h3>
+                    <p>Whether you're buying or selling a business, I'll guide you through the transaction process with strategic counsel and careful due diligence.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Intellectual Property</h3>
+                    <p>Your ideas matter. I help clients protect their creative assets—trademarks, copyrights, and trade secrets—with proactive legal protection.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Entertainment Law</h3>
+                    <p>Having spent decades as a performing artist and promoter, I support musicians, producers, venues, labels, and creatives in managing their rights and relationships.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Closely Held Businesses</h3>
+                    <p>I work with founders, family-run companies, and tight-knit teams on succession planning, governance, buy-sell agreements, and long-term strategy.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <h3>Estate Planning</h3>
+                    <p>For individuals and families, I provide estate planning services including wills, trusts, and powers of attorney—so your future is protected.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact fade-in">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Let's Talk About Your Next Step</h2>
+                    <p class="lead">My office is located in Burien, and I work with clients throughout Seattle, King County, and across Washington State.</p>
+                    <p>I make it easy to connect—most clients meet with me virtually via Zoom, Microsoft Teams, or by phone, so there's no need to leave your office.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Call Direct</h4>
+                                <a href="tel:206.240.0442">206.240.0442</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Burien, Washington<br>Serving Washington State</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-video"></i>
+                            <div>
+                                <h4>Virtual Meetings</h4>
+                                <p>Zoom, Microsoft Teams, Phone</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contact-form">
+                        <h3>Schedule a Consultation</h3>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Tell me about your legal needs..." rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <img src="{{ url_for('static', filename='logo.png') }}" alt="Seattle Legal Advisor Logo" class="logo">
+                        <span>Seattle Legal Advisor</span>
+                    </div>
+                    <p>Straightforward legal advice for businesses, creatives, and entrepreneurs in Washington State.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> 206.240.0442</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Burien, Washington</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seattle Legal Advisor. All rights reserved. | Scott Haapala, Attorney at Law</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
