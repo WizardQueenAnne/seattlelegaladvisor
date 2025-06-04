@@ -3,92 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seattle Legal Advisor - Scott M. Haapala PLLC</title>
+    <title>Seattle Business & Estate Attorney | Scott Haapala, ESQ</title>
+    <meta name="description" content="Straightforward Legal Advice for Businesses, Creatives, and Entrepreneurs in Washington State. Seattle attorney Scott Haapala provides contract law, business formation, and intellectual property services.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        :root {
+            --primary-blue: #1e40af;
+            --light-blue: #3b82f6;
+            --dark-blue: #1e3a8a;
+            --navy: #0f172a;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --accent-gold: #f59e0b;
+            --success: #10b981;
+            --error: #ef4444;
+            
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Crimson Text', Georgia, serif;
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            
+            --border-radius: 0.5rem;
+            --border-radius-lg: 1rem;
+            --border-radius-xl: 1.5rem;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
         body {
-            font-family: 'Georgia', serif;
+            font-family: var(--font-sans);
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--gray-700);
+            background-color: var(--white);
             overflow-x: hidden;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1.5rem;
+        }
+
+        .container-sm {
+            max-width: 768px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
+        .header {
             position: fixed;
             top: 0;
-            width: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
 
-        nav {
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            justify-content: space-between;
+            height: 80px;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #1a365d;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--navy);
             text-decoration: none;
-            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
             font-weight: 500;
+            color: var(--gray-600);
+            text-decoration: none;
             transition: color 0.3s ease;
             position: relative;
         }
 
-        .nav-links a:hover {
-            color: #2563eb;
+        .nav-link:hover {
+            color: var(--primary-blue);
         }
 
-        .nav-links a::after {
+        .nav-link::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: #2563eb;
+            background: var(--primary-blue);
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
+        .nav-link:hover::after {
             width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .nav-cta:hover {
+            background: var(--dark-blue);
+            border-color: var(--dark-blue);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gray-600);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
-            color: white;
-            padding: 120px 0 80px;
-            text-align: center;
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--gray-50) 0%, rgba(30, 64, 175, 0.03) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -100,8 +228,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="90" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.5" fill="%23334155" opacity="0.1"/><circle cx="75" cy="75" r="0.5" fill="%23334155" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            opacity: 0.5;
         }
 
         .hero-content {
@@ -109,307 +237,382 @@
             z-index: 2;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards 0.3s;
+        .hero-header {
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto 3rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards 0.6s;
-        }
-
-        .hero-tagline {
-            font-size: 1.1rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+            color: var(--gray-600);
             margin-bottom: 2rem;
-            opacity: 0.9;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards 0.8s;
+            line-height: 1.6;
         }
 
-        .cta-buttons {
+        .hero-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards 1s;
+            margin-bottom: 3rem;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #1a365d;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .cta-button.secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .cta-button.secondary:hover {
-            background: white;
-            color: #1a365d;
-        }
-
-        /* Attorney Profile Section */
-        .attorney-profile {
-            background: white;
-            padding: 80px 0;
-            position: relative;
-        }
-
-        .profile-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 60px;
+        .btn {
+            display: inline-flex;
             align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
         }
 
-        .profile-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 20px;
-            padding: 40px;
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-blue);
+            border-color: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
             text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            transform: translateX(-30px);
-            opacity: 0;
-            transition: all 0.6s ease;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
         }
 
-        .profile-card.visible {
-            transform: translateX(0);
-            opacity: 1;
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.95);
         }
 
-        .profile-info {
-            transform: translateX(30px);
-            opacity: 0;
-            transition: all 0.6s ease;
-        }
-
-        .profile-info.visible {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        .attorney-name {
+        .stat-number {
+            font-family: var(--font-serif);
             font-size: 2.5rem;
-            color: #1a365d;
+            font-weight: 600;
+            color: var(--primary-blue);
             margin-bottom: 0.5rem;
         }
 
-        .attorney-credentials {
+        .stat-label {
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 4rem;
+        }
+
+        .about-text h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
             font-size: 1.1rem;
-            color: #666;
+            line-height: 1.7;
+            color: var(--gray-600);
+        }
+
+        .about-card {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: var(--white);
+            padding: 3rem 2.5rem;
+            border-radius: var(--border-radius-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .about-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
             margin-bottom: 1rem;
         }
 
-        .experience-badge {
-            display: inline-block;
-            background: #2563eb;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .profile-description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
+        .about-card p {
+            opacity: 0.9;
+            line-height: 1.6;
             margin-bottom: 2rem;
         }
 
-        .profile-highlights {
-            list-style: none;
-            margin: 2rem 0;
+        .contact-info {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
         }
 
-        .profile-highlights li {
-            padding: 8px 0;
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .profile-highlights li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #2563eb;
-            font-weight: bold;
-        }
-
-        /* Practice Areas */
-        .practice-areas {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #1a365d;
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
             margin-bottom: 1rem;
-            transform: translateY(30px);
-            opacity: 0;
-            transition: all 0.6s ease;
+            font-weight: 500;
         }
 
-        .section-subtitle {
+        .contact-item i {
+            width: 20px;
+            opacity: 0.8;
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: var(--gray-50);
+        }
+
+        .section-header {
             text-align: center;
-            font-size: 1.2rem;
-            color: #666;
             margin-bottom: 4rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            transform: translateY(30px);
-            opacity: 0;
-            transition: all 0.6s ease;
         }
 
-        .section-title.visible,
-        .section-subtitle.visible {
-            transform: translateY(0);
-            opacity: 1;
+        .section-header h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 4rem;
+            gap: 2rem;
         }
 
         .service-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--gray-200);
             transition: all 0.3s ease;
-            transform: translateY(30px);
-            opacity: 0;
-            border-left: 4px solid #2563eb;
+            position: relative;
+            overflow: hidden;
         }
 
-        .service-card.visible {
-            transform: translateY(0);
-            opacity: 1;
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--primary-blue);
+            transition: height 0.3s ease;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-blue);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
         }
 
         .service-icon {
-            font-size: 2.5rem;
-            color: #2563eb;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: var(--white);
+            border-radius: var(--border-radius-lg);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--navy);
             margin-bottom: 1rem;
         }
 
-        .service-title {
-            font-size: 1.4rem;
-            color: #1a365d;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-
-        .service-description {
-            color: #666;
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 4rem;
-        }
-
-        .testimonial-card {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transform: translateY(30px);
-            opacity: 0;
-            transition: all 0.6s ease;
-            position: relative;
-        }
-
-        .testimonial-card.visible {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            color: #555;
+        .service-card p {
+            color: var(--gray-600);
             line-height: 1.7;
-            margin-bottom: 1rem;
         }
 
-        .testimonial-author {
-            font-weight: bold;
-            color: #1a365d;
+        /* Experience Section */
+        .experience {
+            padding: 80px 0;
+            background: var(--white);
         }
 
-        .quote-mark {
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            font-size: 4rem;
-            color: #2563eb;
-            opacity: 0.3;
-            font-family: serif;
+        .experience-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .experience-text h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+        }
+
+        .credentials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .credential {
+            padding: 1.5rem;
+            background: var(--gray-50);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .credential h4 {
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .credential p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
         }
 
         /* Contact Section */
         .contact {
             padding: 80px 0;
-            background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
-            color: white;
+            background: var(--navy);
+            color: var(--white);
         }
 
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 4rem;
             align-items: start;
         }
 
         .contact-info h2 {
+            font-family: var(--font-serif);
             font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.9;
             margin-bottom: 2rem;
         }
 
@@ -420,528 +623,847 @@
         .contact-detail {
             display: flex;
             align-items: center;
+            gap: 1rem;
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            transition: background 0.3s ease;
         }
 
-        .contact-icon {
-            margin-right: 1rem;
-            font-size: 1.2rem;
-            color: #60a5fa;
-        }
-
-        .form-container {
+        .contact-detail:hover {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-detail i {
+            color: var(--accent-gold);
+            font-size: 1.25rem;
+            width: 24px;
+        }
+
+        .contact-detail-content h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-detail-content a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-detail-content a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Form */
+        .form-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: var(--border-radius-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-container h3 {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
             font-weight: 500;
+            color: var(--white);
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            font-size: 16px;
-            transition: all 0.3s ease;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
             font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            background: white;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            border-color: var(--accent-gold);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
         }
 
         .form-group textarea {
-            height: 120px;
+            min-height: 120px;
             resize: vertical;
         }
 
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
         .submit-btn {
-            background: white;
-            color: #1a365d;
-            padding: 15px 40px;
+            width: 100%;
+            background: var(--accent-gold);
+            color: var(--navy);
             border: none;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: bold;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 100%;
         }
 
         .submit-btn:hover {
+            background: #d97706;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         /* Footer */
-        footer {
-            background: #1a365d;
-            color: white;
-            text-align: center;
-            padding: 40px 0;
+        .footer {
+            background: var(--gray-900);
+            color: var(--gray-400);
+            padding: 3rem 0 1rem;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
             margin-bottom: 2rem;
         }
 
-        .footer-section h3 {
+        .footer-section h4 {
+            color: var(--white);
+            font-weight: 600;
             margin-bottom: 1rem;
-            color: #60a5fa;
         }
 
+        .footer-section p,
         .footer-section a {
-            color: #ccc;
+            color: var(--gray-400);
             text-decoration: none;
+            line-height: 1.6;
             transition: color 0.3s ease;
         }
 
         .footer-section a:hover {
-            color: white;
+            color: var(--white);
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        .footer-bottom {
+            border-top: 1px solid var(--gray-800);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--gray-500);
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1rem;
             }
 
-            .hero h1 {
+            .hero-content,
+            .about-content,
+            .experience-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 2rem;
+                transition: left 0.3s ease;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 120px 0 60px;
+            }
+
+            .hero-title {
                 font-size: 2.5rem;
             }
 
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .profile-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .services-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-buttons {
+            .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card,
+            .stat-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .section-header h2,
+            .about-text h2,
+            .experience-text h2,
+            .contact-info h2 {
+                font-size: 2rem;
+            }
+
+            .about, .services, .experience, .contact {
+                padding: 60px 0;
+            }
         }
 
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .about-card,
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        /* Form Message Styles */
+        .form-message {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
         }
 
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.6s ease;
+        .form-message.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
         }
 
-        .slide-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
+        .form-message.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+            border: 1px solid rgba(239, 68, 68, 0.2);
         }
 
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.6s ease;
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s ease-in-out infinite;
         }
 
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Smooth reveal animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content > * {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-header {
+            animation-delay: 0.2s;
+        }
+
+        .hero-buttons {
+            animation-delay: 0.4s;
+        }
+
+        .hero-stats {
+            animation-delay: 0.6s;
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">Seattle Legal Advisor</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Practice Areas</a></li>
-                <li><a href="#testimonials">Client Reviews</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="logo">Seattle Legal Advisor</a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Practice Areas</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="tel:206-240-0442" class="nav-cta">Call Now</a></li>
             </ul>
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Seattle Legal Advisor</h1>
-                <p class="hero-subtitle">Full Suite Legal Service Provider for Businesses, Entrepreneurs and Individuals</p>
-                <p class="hero-tagline">Ethical. Knowledgeable. Proactive. Business Law and Intellectual Property attorney serving Washington State</p>
-                <div class="cta-buttons">
-                    <a href="tel:206-240-0442" class="cta-button">Call 206-240-0442</a>
-                    <a href="#contact" class="cta-button secondary">Free Consultation</a>
+                <div class="hero-header fade-in">
+                    <h1 class="hero-title">Straightforward Legal Advice for Businesses, Creatives, and Entrepreneurs</h1>
+                    <p class="hero-subtitle">
+                        I'm Scott Haapala, a Seattle-based attorney who helps individuals and businesses navigate legal matters with clarity and confidence. Whether you're forming a new company, negotiating a contract, or preparing to sell your business, I offer practical, responsive legal support tailored to your specific goals.
+                    </p>
+                </div>
+
+                <div class="hero-buttons fade-in">
+                    <a href="tel:206-240-0442" class="btn btn-primary">
+                        <i class="fas fa-phone"></i>
+                        Call 206-240-0442
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-calendar"></i>
+                        Free Consultation
+                    </a>
+                </div>
+
+                <div class="hero-stats fade-in">
+                    <div class="stat-card">
+                        <div class="stat-number">37+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">States Licensed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Client Focused</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="attorney-profile">
+    <!-- About Section -->
+    <section id="about" class="about">
         <div class="container">
-            <div class="profile-content">
-                <div class="profile-card slide-in-left">
-                    <h2 class="attorney-name">Scott M. Haapala</h2>
-                    <p class="attorney-credentials">Attorney, PLLC</p>
-                    <div class="experience-badge">37+ Years Experience</div>
-                    <p>Licensed in WA, DC, MD</p>
-                </div>
-                
-                <div class="profile-info slide-in-right">
-                    <h3 style="font-size: 2rem; color: #1a365d; margin-bottom: 1rem;">About Scott</h3>
-                    <p class="profile-description">
+            <div class="about-content">
+                <div class="about-text slide-in-left">
+                    <h2>A Personalized Legal Approach That Puts You First</h2>
+                    <p class="lead">
+                        At Seattle Legal Advisor, I bring firsthand experience as both a lawyer and business owner. I've started, run, and advised businesses across industries—and I know how important it is to have someone in your corner who can explain the legal fine print and protect your interests.
+                    </p>
+                    <p>
                         <strong>Scott M. Haapala</strong> is an attorney, husband, father, gardener and artist. His corporate legal career began working at Baker & McKenzie where international energy, corporate finance, and business transactions consumed all his time. Motivated to make a greater contribution to the environment, Scott moved to the Environmental Integrity Project to focus on environmental enforcement of the Clean Air and Clean Water Acts.
                     </p>
-                    <p class="profile-description">
-                        Scott has a thorough understanding of Washington law and knows first-hand the trials and tribulations that come with being a business owner because he has owned and managed multiple businesses in addition to his law practice. <strong>It can be hard to start and grow a business, and he is here to help.</strong>
+                    <p>
+                        Every client has different goals—and different risk tolerance. I take the time to understand your business, your values, and what success means to you. Then I help you move forward with confidence.
                     </p>
-                    <ul class="profile-highlights">
-                        <li>University of Washington Graduate (2000)</li>
-                        <li>Former Baker & McKenzie Corporate Attorney</li>
-                        <li>Business Owner & Entrepreneur</li>
-                        <li>Environmental Law Specialist</li>
-                        <li>Construction Law Experience</li>
-                        <li>Intellectual Property Expert</li>
-                    </ul>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="services" class="practice-areas">
-        <div class="container">
-            <h2 class="section-title fade-in">Practice Areas</h2>
-            <p class="section-subtitle fade-in">
-                Helping clients form, manage and grow their businesses is a passion of mine. I provide clear, strategic legal advice tailored to business owners and entrepreneurs throughout Washington State.
-            </p>
-            
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">⚖️</div>
-                    <h3 class="service-title">Contract Law</h3>
-                    <p class="service-description">
-                        For your business to succeed, it is essential that you are represented by a knowledgeable contract law attorney. I can guide you through the negotiation, drafting and review of contracts. I also handle breach of contract cases.
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">🏢</div>
-                    <h3 class="service-title">Business Formation</h3>
-                    <p class="service-description">
-                        If you are forming a business in Washington, you need to hire an experienced attorney to look out for your best interests. I can guide you through every step of the business formation process, including insurance coverage, investment strategies, compliance issues, contracts and more.
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">🤝</div>
-                    <h3 class="service-title">Corporate Law</h3>
-                    <p class="service-description">
-                        I am dedicated to helping clients in all areas of corporate law, including formations, restructuring, partnership and shareholder disputes, contract law, asset protection and more. I fight for the future success of your business.
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">🔄</div>
-                    <h3 class="service-title">Mergers & Acquisitions</h3>
-                    <p class="service-description">
-                        Whether your company is going through a merger or acquisition, you need an experienced attorney on your side to guide you through the process. I help you with every aspect, ensuring that your business continues to succeed.
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">📋</div>
-                    <h3 class="service-title">Business Succession Planning</h3>
-                    <p class="service-description">
-                        If your business is in need of an ownership transition, I have the experience and knowledge necessary to ensure the process goes smoothly. No matter the size of your business, I am a business succession planning lawyer that can help you.
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">💡</div>
-                    <h3 class="service-title">Intellectual Property</h3>
-                    <p class="service-description">
-                        When you create art, a product or an idea, you deserve the credit and the rights. I handle intellectual property cases involving patents, copyrights, trademarks and trade secrets. Contact me today to speak to a knowledgeable intellectual property lawyer about your case.
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">🎭</div>
-                    <h3 class="service-title">Entertainment Law</h3>
-                    <p class="service-description">
-                        I represent music labels, producers, distributors, musicians, and other artists and industry professionals in entertainment law cases involving copyright law, contracts, trademark issues, and business formation.
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">🏗️</div>
-                    <h3 class="service-title">Construction Law</h3>
-                    <p class="service-description">
-                        As a construction attorney, I help with payment issues, contract disputes, lien rights, and other construction-related legal matters to protect contractors, subcontractors, and property owners.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2 class="section-title fade-in">Client Reviews</h2>
-            <p class="section-subtitle fade-in">
-                See what clients have to say about working with Seattle Legal Advisor
-            </p>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <div class="quote-mark">"</div>
-                    <p class="testimonial-text">
-                        I hired Scott when my company's debt spiraled out of control after defaulting on a commercial loan. Scott spent a lot of time with me to understand the quirks and nuances of the company's operations. He helped us get our debt to a manageable level and restructured our company from an LLC to a corporation to lower our tax burden. No doubt in my mind that Scott cares about his clients.
-                    </p>
-                    <p class="testimonial-author">— Business Owner</p>
-                </div>
-                
-                <div class="testimonial-card fade-in">
-                    <div class="quote-mark">"</div>
-                    <p class="testimonial-text">
-                        I run a 9-year-old publishing company and have a weird mix of small business legal needs from minor sales contracts, to higher level intellectual property strategic issues. Scott is trustworthy and experienced with nontraditional businesses.
-                    </p>
-                    <p class="testimonial-author">— Publishing Company Owner</p>
-                </div>
-                
-                <div class="testimonial-card fade-in">
-                    <div class="quote-mark">"</div>
-                    <p class="testimonial-text">
-                        Scott helped us secure a trademark that was a questionable goal. Scott led discussions that ultimately got us through this difficult process and allowed our business to receive approval from the USPTO after some difficult negotiation. The value he brought was long term thinking and in depth understanding of his clients unique needs.
-                    </p>
-                    <p class="testimonial-author">— Business Executive</p>
-                </div>
-                
-                <div class="testimonial-card fade-in">
-                    <div class="quote-mark">"</div>
-                    <p class="testimonial-text">
-                        Scott has been my lawyer since the day we opened our office. He's meticulous, thorough and timely and reasonable. I recommend him for all your business needs.
-                    </p>
-                    <p class="testimonial-author">— Small Business Owner</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2>Contact Seattle Legal Advisor</h2>
-                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">
-                        When you retain the services of Seattle Legal Advisor, you can be assured that your attorney is fully qualified to take on your case. Let me work with you to address your legal concerns in Washington.
-                    </p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <span class="contact-icon">📞</span>
-                            <div>
-                                <strong>Phone:</strong><br>
-                                <a href="tel:206-240-0442" style="color: white; text-decoration: none;">206-240-0442</a>
-                            </div>
-                        </div>
+                <div class="about-card slide-in-right">
+                    <div class="about-card-content">
+                        <h3>Scott M. Haapala, ESQ</h3>
+                        <p>
+                            Licensed attorney in Washington, DC, and Maryland with over 37 years of experience helping businesses and individuals navigate complex legal matters with strategic counsel and careful attention to detail.
+                        </p>
                         
-                        <div class="contact-detail">
-                            <span class="contact-icon">✉️</span>
-                            <div>
-                                <strong>Email:</strong><br>
-                                <a href="mailto:scotthaapala@gmail.com" style="color: white; text-decoration: none;">scotthaapala@gmail.com</a>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:206-240-0442">206-240-0442</a>
                             </div>
-                        </div>
-                        
-                        <div class="contact-detail">
-                            <span class="contact-icon">📍</span>
-                            <div>
-                                <strong>Serving:</strong><br>
-                                Seattle & Washington State
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
                             </div>
-                        </div>
-                        
-                        <div class="contact-detail">
-                            <span class="contact-icon">⚖️</span>
-                            <div>
-                                <strong>Law Firm:</strong><br>
-                                Scott M. Haapala PLLC
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Serving Washington State</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="form-container">
-                    <h3 style="margin-bottom: 1.5rem;">Free Consultation Request</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Legal Services Rooted in Strategy and Clarity</h2>
+                <p>
+                    My practice focuses on helping clients make smart, informed decisions across a comprehensive range of legal areas.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Contract Law</h3>
+                    <p>
+                        From contract drafting, amending, and negotiation to handling breach of contract disputes, I make sure your agreements are sound, clear, and enforceable.
+                    </p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Business Formation</h3>
+                    <p>
+                        Launching a new venture in Washington? I help clients choose the right structure, handle compliance, and build a solid legal foundation.
+                    </p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Corporate & Business Law</h3>
+                    <p>
+                        I advise startups, closely held companies, employee-owned entities, nonprofits, and growing businesses on corporate formation, restructuring, and day-to-day legal needs.
+                    </p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Mergers & Acquisitions</h3>
+                    <p>
+                        Whether you're buying or selling a business, I'll guide you through the transaction process with strategic counsel and careful due diligence.
+                    </p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Business Succession Planning</h3>
+                    <p>
+                        When it's time to pass the torch, I'm here to help you do it smoothly—with plans that protect your legacy and secure your business's future.
+                    </p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Intellectual Property</h3>
+                    <p>
+                        Your ideas matter. I help clients protect their creative assets—trademarks, copyrights, and trade secrets—with proactive legal protection.
+                    </p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Entertainment Law</h3>
+                    <p>
+                        Having spent decades as a performing artist and promoter, I know the music industry well. From licensing and contracts to IP protection, I support musicians, producers, venues, labels, and creatives.
+                    </p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Estate Planning</h3>
+                    <p>
+                        For individuals and families, I provide estate planning services including wills, trusts, and powers of attorney—so your future is protected.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience">
+        <div class="container">
+            <div class="experience-content">
+                <div class="experience-text slide-in-left">
+                    <h2>Experience You Can Trust</h2>
+                    <p>
+                        If you're looking for a law firm that combines big-picture thinking with fine-detail execution, you're in the right place. I have a thorough understanding of Washington law and know first-hand the trials and tribulations that come with being a business owner.
+                    </p>
+                    <p>
+                        My office is located in Burien, and I work with clients throughout Seattle, King County, and across Washington State. I make it easy to connect—most clients meet with me virtually via Zoom, Microsoft Teams, or by phone, so there's no need to leave your office.
+                    </p>
+                </div>
+
+                <div class="credentials slide-in-right">
+                    <div class="credential">
+                        <h4>Education</h4>
+                        <p>University of Washington School of Law Graduate (2000)</p>
+                    </div>
+                    <div class="credential">
+                        <h4>Former Experience</h4>
+                        <p>Baker & McKenzie Corporate Attorney</p>
+                    </div>
+                    <div class="credential">
+                        <h4>Specializations</h4>
+                        <p>Business Owner & Environmental Law Specialist</p>
+                    </div>
+                    <div class="credential">
+                        <h4>Licensed In</h4>
+                        <p>Washington, DC, Maryland</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info slide-in-left">
+                    <h2>Let's Talk About Your Next Step</h2>
+                    <p>
+                        Whether you're just getting started or facing a complex legal issue, I'm here to help. When you retain the services of Seattle Legal Advisor, you can be assured that your attorney is fully qualified to take on your case.
+                    </p>
+
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-detail-content">
+                                <h4>Phone</h4>
+                                <a href="tel:206-240-0442">206-240-0442</a>
+                            </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
+
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-detail-content">
+                                <h4>Email</h4>
+                                <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
+                            </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
+
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-detail-content">
+                                <h4>Serving</h4>
+                                <p>Seattle, King County & Washington State</p>
+                            </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="practice-area">Practice Area of Interest</label>
-                            <select id="practice-area" name="practice-area">
-                                <option value="">Select Practice Area</option>
-                                <option value="contract-law">Contract Law</option>
-                                <option value="business-formation">Business Formation</option>
-                                <option value="corporate-law">Corporate Law</option>
-                                <option value="mergers-acquisitions">Mergers & Acquisitions</option>
-                                <option value="succession-planning">Business Succession Planning</option>
-                                <option value="intellectual-property">Intellectual Property</option>
-                                <option value="entertainment-law">Entertainment Law</option>
-                                <option value="construction-law">Construction Law</option>
-                                <option value="other">Other</option>
-                            </select>
+
+                        <div class="contact-detail">
+                            <i class="fas fa-video"></i>
+                            <div class="contact-detail-content">
+                                <h4>Virtual Meetings</h4>
+                                <p>Zoom, Microsoft Teams, Phone</p>
+                            </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
-                            <input type="text" id="subject" name="subject" required>
+                    </div>
+                </div>
+
+                <div class="form-container slide-in-right">
+                    <h3>Request a Free Consultation</h3>
+                    <form id="contact-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
                         </div>
-                        
-                        <div class="form-group">
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city">
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" id="state" name="state" value="Washington">
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="how_found">How did you find us?</label>
+                                <select id="how_found" name="how_found">
+                                    <option value="">Please select</option>
+                                    <option value="Google Search">Google Search</option>
+                                    <option value="Referral">Referral</option>
+                                    <option value="Social Media">Social Media</option>
+                                    <option value="Advertisement">Advertisement</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact_method">Preferred Contact Method</label>
+                                <select id="contact_method" name="contact_method">
+                                    <option value="">Please select</option>
+                                    <option value="Phone">Phone</option>
+                                    <option value="Email">Email</option>
+                                    <option value="Video Call">Video Call</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
                             <label for="message">Tell me about your legal needs *</label>
                             <textarea id="message" name="message" placeholder="Please describe your legal situation and how I can assist you. The more details you provide, the better I can prepare for our consultation." required></textarea>
                         </div>
-                        
-                        <button type="submit" class="submit-btn">Request Free Consultation</button>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="disclaimer" name="disclaimer" required>
+                            <label for="disclaimer">
+                                I understand that contacting Seattle Legal Advisor through this website does not create an attorney-client relationship, and the information I provide is not privileged or confidential until an attorney-client relationship is established.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            Send Message
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Seattle Legal Advisor</h3>
+                    <h4>Seattle Legal Advisor</h4>
                     <p>Scott M. Haapala PLLC</p>
-                    <p>Full Suite Legal Service Provider</p>
-                    <p>Serving Washington State</p>
+                    <p>Straightforward Legal Advice for Businesses, Creatives, and Entrepreneurs in Washington State</p>
+                    <p style="margin-top: 1rem;">
+                        <strong>Ethical. Knowledgeable. Proactive.</strong><br>
+                        Business Law and Intellectual Property Attorney
+                    </p>
                 </div>
-                
+
                 <div class="footer-section">
-                    <h3>Practice Areas</h3>
+                    <h4>Practice Areas</h4>
                     <p><a href="#services">Contract Law</a></p>
                     <p><a href="#services">Business Formation</a></p>
                     <p><a href="#services">Corporate Law</a></p>
                     <p><a href="#services">Mergers & Acquisitions</a></p>
                     <p><a href="#services">Intellectual Property</a></p>
+                    <p><a href="#services">Entertainment Law</a></p>
+                    <p><a href="#services">Estate Planning</a></p>
                 </div>
-                
+
                 <div class="footer-section">
-                    <h3>Contact Information</h3>
+                    <h4>Contact Information</h4>
                     <p><a href="tel:206-240-0442">206-240-0442</a></p>
                     <p><a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a></p>
                     <p>Licensed in WA, DC, MD</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Legal</h3>
-                    <p>Attorney Advertising</p>
-                    <p>Prior results do not guarantee similar outcomes</p>
-                    <p>© 2025 Scott M. Haapala PLLC</p>
+                    <p>Serving Washington State</p>
                 </div>
             </div>
-            
-            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #334155; margin-top: 2rem;">
+
+            <div class="footer-bottom">
                 <p>&copy; 2025 Seattle Legal Advisor - Scott M. Haapala PLLC. All rights reserved.</p>
                 <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">
-                    Ethical. Knowledgeable. Proactive. | Business Law and Intellectual Property Attorney
+                    Attorney Advertising. Prior results do not guarantee similar outcomes.
                 </p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Mobile Navigation
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Hide/show header on scroll
+            if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const headerOffset = 80;
+                    const elementPosition = target.offsetTop;
+                    const offsetPosition = elementPosition - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Intersection Observer for scroll animations
+        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -956,157 +1478,150 @@
         }, observerOptions);
 
         // Observe all animated elements
-        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .profile-card, .profile-info, .service-card, .testimonial-card').forEach(el => {
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
             observer.observe(el);
         });
 
-        // Header scroll effect
-        let lastScrollY = window.scrollY;
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            const currentScrollY = window.scrollY;
-            
-            if (currentScrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            }
-            
-            // Hide/show header on scroll
-            if (currentScrollY > lastScrollY && currentScrollY > 200) {
-                header.style.transform = 'translateY(-100%)';
-            } else {
-                header.style.transform = 'translateY(0)';
-            }
-            
-            lastScrollY = currentScrollY;
-        });
-
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Contact form handling
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const phone = formData.get('phone');
-            const practiceArea = formData.get('practice-area');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-            
-            // Create enhanced mailto link with all form data
-            const emailBody = `
-CONSULTATION REQUEST FROM ${name.toUpperCase()}
+            const formData = new FormData(contactForm);
+            const data = {
+                name: formData.get('name'),
+                company: formData.get('company'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                city: formData.get('city'),
+                state: formData.get('state'),
+                how_found: formData.get('how_found'),
+                contact_method: formData.get('contact_method'),
+                message: formData.get('message'),
+                disclaimer: formData.get('disclaimer')
+            };
 
-Contact Information:
-• Name: ${name}
-• Email: ${email}
-• Phone: ${phone || 'Not provided'}
-• Practice Area of Interest: ${practiceArea || 'Not specified'}
+            // Validate required fields
+            if (!data.name || !data.email || !data.phone || !data.message || !data.disclaimer) {
+                showMessage('Please fill in all required fields and agree to the disclaimer.', 'error');
+                return;
+            }
 
-Subject: ${subject}
+            const submitButton = contactForm.querySelector('.submit-btn');
+            const originalText = submitButton.innerHTML;
+            
+            // Show loading state
+            submitButton.innerHTML = '<span class="loading"></span> Sending...';
+            submitButton.disabled = true;
 
-Message:
-${message}
+            try {
+                const response = await fetch('/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
 
----
-This consultation request was submitted through seattlelegaladvisor.com
-            `.trim();
-            
-            const mailtoLink = `mailto:scotthaapala@gmail.com?subject=${encodeURIComponent('Consultation Request: ' + subject)}&body=${encodeURIComponent(emailBody)}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success feedback
-            const submitBtn = document.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Email Prepared - Check Your Email Client';
-            submitBtn.style.background = '#22c55e';
-            submitBtn.style.transform = 'scale(1.02)';
-            
-            // Reset form and button after delay
-            setTimeout(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.style.background = 'white';
-                submitBtn.style.transform = 'scale(1)';
-                this.reset();
-                
-                // Show a subtle confirmation message
-                const confirmation = document.createElement('div');
-                confirmation.innerHTML = '✓ Form submitted successfully!';
-                confirmation.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background: #22c55e;
-                    color: white;
-                    padding: 15px 25px;
-                    border-radius: 10px;
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-                    z-index: 10000;
-                    font-weight: bold;
-                    animation: slideInRight 0.5s ease;
-                `;
-                document.body.appendChild(confirmation);
-                
-                setTimeout(() => {
-                    confirmation.style.animation = 'slideOutRight 0.5s ease';
-                    setTimeout(() => confirmation.remove(), 500);
-                }, 3000);
-            }, 3000);
+                const result = await response.json();
+
+                if (result.success) {
+                    showMessage(result.message, 'success');
+                    contactForm.reset();
+                } else {
+                    showMessage(result.message, 'error');
+                }
+            } catch (error) {
+                showMessage('There was an error sending your message. Please try again or call directly at 206-240-0442.', 'error');
+            } finally {
+                // Reset button
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }
         });
 
-        // Add floating animation to service cards
-        document.querySelectorAll('.service-card').forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.1}s`;
+        // Show message function
+        function showMessage(message, type) {
+            // Remove any existing messages
+            const existingMessage = document.querySelector('.form-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            // Create new message element
+            const messageEl = document.createElement('div');
+            messageEl.className = `form-message ${type}`;
+            messageEl.textContent = message;
             
+            // Insert message before the form
+            contactForm.parentNode.insertBefore(messageEl, contactForm);
+
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                if (messageEl) {
+                    messageEl.style.opacity = '0';
+                    messageEl.style.transform = 'translateY(-10px)';
+                    setTimeout(() => messageEl.remove(), 300);
+                }
+            }, 5000);
+        }
+
+        // Add some interactive enhancements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate stat numbers
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const animateNumbers = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const finalValue = target.textContent.replace(/\D/g, '');
+                        if (finalValue) {
+                            animateValue(target, 0, parseInt(finalValue), 2000);
+                        }
+                        observer.unobserve(target);
+                    }
+                });
+            };
+
+            const numberObserver = new IntersectionObserver(animateNumbers, {
+                threshold: 0.5
+            });
+
+            statNumbers.forEach(number => {
+                numberObserver.observe(number);
+            });
+        });
+
+        function animateValue(element, start, end, duration) {
+            const startTimestamp = performance.now();
+            const step = (timestamp) => {
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const currentValue = Math.floor(progress * (end - start) + start);
+                
+                if (element.textContent.includes('+')) {
+                    element.textContent = currentValue + '+';
+                } else if (element.textContent.includes('%')) {
+                    element.textContent = currentValue + '%';
+                } else {
+                    element.textContent = currentValue;
+                }
+                
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                }
+            };
+            requestAnimationFrame(step);
+        }
+
+        // Add hover effects to service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
             card.addEventListener('mouseenter', () => {
-                card.style.animation = 'float 2s ease-in-out infinite';
+                card.style.transform = 'translateY(-8px) scale(1.02)';
             });
             
             card.addEventListener('mouseleave', () => {
-                card.style.animation = 'none';
-            });
-        });
-
-        // Add CSS animations for notifications
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideInRight {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            
-            @keyframes slideOutRight {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100%); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Add loading states for better UX
-        document.addEventListener('DOMContentLoaded', function() {
-            // Fade in the page content
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
-            
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-
-        // Enhance form interaction
-        document.querySelectorAll('input, textarea, select').forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.style.transform = 'scale(1.02)';
-                this.parentElement.style.transition = 'transform 0.2s ease';
-            });
-            
-            input.addEventListener('blur', function() {
-                this.parentElement.style.transform = 'scale(1)';
+                card.style.transform = 'translateY(-5px) scale(1)';
             });
         });
     </script>
