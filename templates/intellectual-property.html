@@ -1,1 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intellectual Property Attorney | Seattle IP Lawyer</title>
+    <meta name="description" content="When you create art, a product or an idea, you deserve the credit and the rights. I handle intellectual property cases involving patents, copyrights, trademarks and trade secrets.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --rich-black: #000000; --deep-black: #0A0A0A; --charcoal: #1A1A1A; --dark-gray: #2D2D2D;
+            --medium-gray: #404040; --light-gray: #666666; --gold: #FFD700; --dark-gold: #B8860B;
+            --light-gold: #FFF8DC; --cream: #FFFDD0; --white: #FFFFFF; --silver: #C0C0C0;
+            --font-heading: 'Playfair Display', serif; --font-body: 'Inter', sans-serif;
+            --section-padding: 100px; --container-padding: 2rem; --shadow-gold: 0 4px 20px rgba(255, 215, 0, 0.3);
+            --shadow-dark: 0 8px 30px rgba(0, 0, 0, 0.5); --shadow-heavy: 0 15px 50px rgba(0, 0, 0, 0.7);
+            --border-radius: 8px; --border-radius-lg: 16px; --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-body); line-height: 1.7; color: var(--white); background: var(--rich-black); overflow-x: hidden; }
+
+        .geometric-bg { position: relative; overflow: hidden; }
+        .geometric-bg::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(45deg, transparent 40%, var(--gold) 41%, var(--gold) 42%, transparent 43%),
+                linear-gradient(-45deg, transparent 40%, var(--gold) 41%, var(--gold) 42%, transparent 43%),
+                linear-gradient(90deg, transparent 48%, var(--gold) 49%, var(--gold) 50%, transparent 51%);
+            background-size: 60px 60px, 60px 60px, 80px 80px; opacity: 0.05; animation: geometricMove 20s linear infinite;
+        }
+        @keyframes geometricMove { 0% { transform: translateX(0) translateY(0); } 100% { transform: translateX(60px) translateY(60px); } }
+
+        .art-deco-border { position: relative; }
+        .art-deco-border::before, .art-deco-border::after {
+            content: ''; position: absolute; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            left: 50%; transform: translateX(-50%);
+        }
+        .art-deco-border::before { top: -15px; width: 120px; }
+        .art-deco-border::after { bottom: -15px; width: 80px; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 var(--container-padding); }
+
+        /* Header styles - same as other pages */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px);
+            border-bottom: 2px solid var(--gold); z-index: 1000; transition: var(--transition-smooth);
+        }
+        .header.scrolled { background: rgba(0, 0, 0, 0.98); box-shadow: var(--shadow-dark); }
+
+        .nav { display: flex; align-items: center; justify-content: space-between; height: 90px; position: relative; }
+
+        .logo {
+            font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--gold);
+            text-decoration: none; transition: var(--transition-smooth); position: relative;
+        }
+        .logo::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+            background: var(--gold); transition: var(--transition-smooth);
+        }
+        .logo:hover::after { width: 100%; }
+
+        .nav-menu { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+        .nav-item { position: relative; }
+        .nav-link {
+            font-weight: 500; color: var(--white); text-decoration: none; transition: var(--transition-smooth);
+            position: relative; padding: 0.5rem 1rem; border-radius: var(--border-radius);
+        }
+        .nav-link::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, transparent, var(--gold), transparent); opacity: 0;
+            transform: scaleX(0); transition: var(--transition-smooth); border-radius: var(--border-radius);
+        }
+        .nav-link:hover::before { opacity: 0.1; transform: scaleX(1); }
+        .nav-link:hover { color: var(--gold); transform: translateY(-2px); }
+
+        .dropdown { position: relative; }
+        .dropdown-content {
+            position: absolute; top: 100%; left: 0; background: rgba(0, 0, 0, 0.98); backdrop-filter: blur(20px);
+            border: 2px solid var(--gold); border-radius: var(--border-radius-lg); min-width: 280px;
+            opacity: 0; visibility: hidden; transform: translateY(-10px); transition: var(--transition-smooth);
+            padding: 1rem 0; box-shadow: var(--shadow-heavy); z-index: 1001;
+        }
+        .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-content .nav-link { display: block; padding: 0.75rem 1.5rem; margin: 0; border-radius: 0; font-size: 0.95rem; }
+        .dropdown-content .nav-link:hover { background: rgba(255, 215, 0, 0.1); transform: translateX(10px); }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold)); color: var(--rich-black);
+            padding: 1rem 2rem; border-radius: var(--border-radius-lg); text-decoration: none; font-weight: 600;
+            transition: var(--transition-bounce); border: 2px solid var(--gold); position: relative;
+            overflow: hidden; margin-left: 1rem;
+        }
+        .nav-cta::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.6s ease;
+        }
+        .nav-cta:hover::before { left: 100%; }
+        .nav-cta:hover { transform: translateY(-3px) scale(1.05); box-shadow: var(--shadow-gold); }
+
+        .mobile-menu-btn {
+            display: none; background: none; border: none; color: var(--white); font-size: 1.5rem;
+            cursor: pointer; transition: var(--transition-smooth);
+        }
+        .mobile-menu-btn:hover { color: var(--gold); transform: scale(1.1); }
+
+        .main { margin-top: 90px; }
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--rich-black) 0%, var(--charcoal) 100%);
+            color: var(--white); padding: 8rem 0 6rem; text-align: center; position: relative; overflow: hidden;
+        }
+        .page-hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, var(--gold) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, var(--gold) 1px, transparent 1px);
+            background-size: 100px 100px, 150px 150px; opacity: 0.1; animation: starField 30s linear infinite;
+        }
+        @keyframes starField { 0% { transform: translateX(0) translateY(0) rotate(0deg); } 100% { transform: translateX(100px) translateY(100px) rotate(360deg); } }
+
+        .page-hero-content { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
+        .page-title {
+            font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700;
+            margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--white), var(--gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .page-subtitle {
+            font-size: 1.4rem; opacity: 0.9; max-width: 700px; margin: 0 auto; line-height: 1.6; color: var(--silver);
+        }
+
+        .breadcrumb {
+            padding: 1rem 0; margin-bottom: 2rem; border-bottom: 1px solid var(--dark-gray);
+            font-size: 0.95rem; color: var(--silver);
+        }
+        .breadcrumb a { color: var(--gold); text-decoration: none; transition: var(--transition-smooth); }
+        .breadcrumb a:hover { color: var(--light-gold); }
+        .breadcrumb span { margin: 0 0.5rem; opacity: 0.6; }
+
+        .page-content { padding: 6rem 0; background: var(--charcoal); position: relative; }
+        .content-wrapper { display: grid; grid-template-columns: 2fr 1fr; gap: 5rem; align-items: start; }
+
+        .content-text { font-size: 1.15rem; line-height: 1.8; color: var(--silver); }
+        .content-text h2 {
+            font-family: var(--font-heading); font-size: 2.5rem; color: var(--white);
+            margin: 3rem 0 2rem; position: relative;
+        }
+        .content-text h2::after {
+            content: ''; position: absolute; bottom: -10px; left: 0;
+            width: 80px; height: 3px; background: var(--gold);
+        }
+        .content-text h3 { font-family: var(--font-heading); font-size: 1.8rem; color: var(--gold); margin: 2.5rem 0 1.5rem; }
+        .content-text p { margin-bottom: 1.5rem; }
+        .content-text strong { color: var(--gold); font-weight: 600; }
+        .content-text ul { margin: 1.5rem 0; padding-left: 2rem; }
+        .content-text li { margin-bottom: 0.75rem; color: var(--silver); }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--dark-gray), var(--medium-gray));
+            border: 2px solid var(--gold); border-radius: var(--border-radius-lg);
+            padding: 2.5rem; margin: 3rem 0; position: relative; overflow: hidden;
+        }
+        .highlight-box::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 4px; height: 100%; background: var(--gold);
+        }
+        .highlight-box h3 { color: var(--gold); margin-bottom: 1.5rem; font-size: 1.5rem; }
+        .highlight-box p { color: var(--white); font-size: 1.1rem; line-height: 1.7; }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--dark-gray), var(--medium-gray));
+            padding: 3rem; border-radius: var(--border-radius-lg); border: 2px solid var(--gold);
+            position: sticky; top: 120px; height: fit-content;
+        }
+        .contact-card h3 {
+            font-family: var(--font-heading); font-size: 2rem; color: var(--gold);
+            margin-bottom: 2rem; text-align: center;
+        }
+        .contact-item {
+            display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+            padding: 1rem; background: rgba(255, 215, 0, 0.05);
+            border-radius: var(--border-radius); transition: var(--transition-smooth);
+        }
+        .contact-item:hover { background: rgba(255, 215, 0, 0.1); transform: translateX(5px); }
+        .contact-item i { color: var(--gold); font-size: 1.25rem; width: 24px; text-align: center; }
+        .contact-item-content h4 { font-weight: 600; margin-bottom: 0.25rem; color: var(--white); }
+        .contact-item-content a,
+        .contact-item-content p { color: var(--silver); text-decoration: none; font-weight: 500; transition: var(--transition-smooth); }
+        .contact-item-content a:hover { color: var(--gold); }
+
+        .consultation-btn {
+            width: 100%; background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--rich-black); padding: 1.25rem 2rem; border: none;
+            border-radius: var(--border-radius-lg); font-weight: 600; font-size: 1.1rem;
+            cursor: pointer; transition: var(--transition-bounce); text-decoration: none;
+            display: inline-block; text-align: center; margin-top: 1.5rem;
+        }
+        .consultation-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-gold); }
+
+        .footer {
+            background: var(--deep-black); color: var(--silver); padding: 4rem 0 2rem;
+            position: relative; border-top: 3px solid var(--gold);
+        }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; }
+        .footer-section h4 {
+            color: var(--gold); font-weight: 600; margin-bottom: 1.5rem;
+            font-size: 1.3rem; position: relative;
+        }
+        .footer-section h4::after {
+            content: ''; position: absolute; bottom: -8px; left: 0;
+            width: 40px; height: 2px; background: var(--gold);
+        }
+        .footer-section p, .footer-section a {
+            color: var(--silver); text-decoration: none; line-height: 1.7;
+            transition: var(--transition-smooth); margin-bottom: 0.5rem; display: block;
+        }
+        .footer-section a:hover { color: var(--gold); transform: translateX(5px); }
+        .footer-bottom {
+            border-top: 1px solid var(--dark-gray); padding-top: 2rem;
+            text-align: center; color: var(--light-gray);
+        }
+
+        @media (max-width: 1200px) {
+            .content-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-card { position: static; }
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed; top: 90px; left: -100%; width: 100%; height: calc(100vh - 90px);
+                background: rgba(0, 0, 0, 0.98); backdrop-filter: blur(20px); flex-direction: column;
+                justify-content: flex-start; padding: 3rem 2rem; transition: left 0.4s ease;
+                box-shadow: var(--shadow-heavy); gap: 1rem;
+            }
+            .nav-menu.active { left: 0; }
+            .dropdown-content {
+                position: static; opacity: 1; visibility: visible; transform: none;
+                background: rgba(255, 215, 0, 0.05); border: 1px solid var(--gold);
+                margin-top: 1rem; padding: 1rem;
+            }
+            .mobile-menu-btn { display: block; }
+            .page-hero { padding: 6rem 0 4rem; }
+            .page-content { padding: 4rem 0; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+            :root { --section-padding: 60px; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 1rem; }
+            .contact-card, .highlight-box { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">Seattle Legal Advisor</a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="attorney-profile.html" class="nav-link">Attorney Profile</a></li>
+                <li class="nav-item dropdown">
+                    <a href="practice-areas.html" class="nav-link">Practice Areas</a>
+                    <div class="dropdown-content">
+                        <a href="business-law.html" class="nav-link">Business Law</a>
+                        <a href="contract-law.html" class="nav-link">Contract Law</a>
+                        <a href="corporate-law.html" class="nav-link">Corporate Law</a>
+                        <a href="business-formation.html" class="nav-link">Business Formation</a>
+                        <a href="business-succession-planning.html" class="nav-link">Business Succession Planning</a>
+                        <a href="closely-held-businesses.html" class="nav-link">Closely Held Businesses</a>
+                        <a href="mergers-acquisitions.html" class="nav-link">Mergers & Acquisitions</a>
+                        <a href="intellectual-property.html" class="nav-link" style="color: var(--gold);">Intellectual Property</a>
+                        <a href="entertainment-law.html" class="nav-link">Entertainment Law</a>
+                        <a href="estate-planning.html" class="nav-link">Estate Planning</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="contact-us.html" class="nav-link">Contact Us</a></li>
+                <li class="nav-item"><a href="tel:206-240-0442" class="nav-cta">Call for Free Consultation 206-240-0442</a></li>
+            </ul>
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Page Hero -->
+        <section class="page-hero geometric-bg">
+            <div class="container">
+                <div class="page-hero-content">
+                    <h1 class="page-title art-deco-border">Intellectual Property</h1>
+                    <p class="page-subtitle">Protect your ideas, innovations, and creative assets</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page Content -->
+        <section class="page-content">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="practice-areas.html">Practice Areas</a>
+                    <span>/</span>
+                    <span style="opacity: 0.8;">Intellectual Property</span>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="content-text">
+                        <p>When you create art, a product or an idea, you deserve the credit and the rights. I handle intellectual property cases involving patents, copyrights, trademarks and trade secrets. Your ideas matter. I help clients protect their creative assets—trademarks, copyrights, and trade secrets—with proactive legal protection.</p>
+
+                        <p>Intellectual property represents some of your most valuable business assets, yet it's often the most vulnerable to theft, misuse, or infringement. Whether you're an inventor, artist, entrepreneur, or established business, protecting your intellectual property is essential to maintaining your competitive advantage and maximizing the value of your innovations.</p>
+
+                        <p>At Seattle Legal Advisor, I help clients identify, protect, and enforce their intellectual property rights across all major categories. From trademark registration and copyright protection to trade secret policies and licensing agreements, I provide comprehensive IP counsel that grows with your business.</p>
+
+                        <div class="highlight-box">
+                            <h3><i class="fas fa-lightbulb"></i> Protect Your Creative Assets</h3>
+                            <p>Your intellectual property is often your most valuable asset. Don't let competitors steal your ideas or dilute your brand—protect what you've created with comprehensive IP strategies.</p>
+                        </div>
+
+                        <h2>Trademark Protection</h2>
+                        <p>Trademarks protect your brand identity and prevent consumer confusion in the marketplace:</p>
+                        <ul>
+                            <li><strong>Trademark Search and Clearance:</strong> Comprehensive searches to avoid conflicts</li>
+                            <li><strong>Federal Trademark Registration:</strong> USPTO application and prosecution</li>
+                            <li><strong>State Trademark Registration:</strong> Washington state protection</li>
+                            <li><strong>Trademark Maintenance:</strong> Renewals and ongoing compliance</li>
+                            <li><strong>Trademark Enforcement:</strong> Opposition, cancellation, and infringement actions</li>
+                            <li><strong>Brand Protection Strategy:</strong> Domain names and international considerations</li>
+                            <li><strong>Licensing Agreements:</strong> Monetizing your trademark assets</li>
+                        </ul>
+
+                        <h3>What Can Be Trademarked</h3>
+                        <ul>
+                            <li>Business names and logos</li>
+                            <li>Product and service names</li>
+                            <li>Slogans and taglines</li>
+                            <li>Colors and design elements</li>
+                            <li>Sounds and jingles</li>
+                            <li>Product packaging and trade dress</li>
+                        </ul>
+
+                        <h2>Copyright Protection</h2>
+                        <p>Copyrights protect original works of authorship and creative expression:</p>
+                        <ul>
+                            <li><strong>Copyright Registration:</strong> Federal registration with the U.S. Copyright Office</li>
+                            <li><strong>Work-for-Hire Agreements:</strong> Clarifying ownership of commissioned works</li>
+                            <li><strong>Copyright Assignment and Licensing:</strong> Transferring and monetizing rights</li>
+                            <li><strong>DMCA Compliance:</strong> Digital Millennium Copyright Act procedures</li>
+                            <li><strong>Fair Use Analysis:</strong> Understanding permitted uses</li>
+                            <li><strong>Copyright Infringement:</strong> Enforcement and defense strategies</li>
+                            <li><strong>International Copyright:</strong> Protection in foreign jurisdictions</li>
+                        </ul>
+
+                        <h3>Copyrightable Works</h3>
+                        <ul>
+                            <li>Written works (books, articles, website content)</li>
+                            <li>Software code and applications</li>
+                            <li>Music and sound recordings</li>
+                            <li>Visual works (photography, artwork, graphics)</li>
+                            <li>Videos and multimedia content</li>
+                            <li>Architectural designs</li>
+                        </ul>
+
+                        <h2>Trade Secrets</h2>
+                        <p>Trade secrets protect confidential business information that provides competitive advantage:</p>
+                        <ul>
+                            <li><strong>Trade Secret Identification:</strong> Cataloging valuable confidential information</li>
+                            <li><strong>Protection Policies:</strong> Employee and contractor confidentiality agreements</li>
+                            <li><strong>Access Controls:</strong> Physical and digital security measures</li>
+                            <li><strong>Employee Training:</strong> Education about confidentiality obligations</li>
+                            <li><strong>Misappropriation Actions:</strong> Enforcement against theft or misuse</li>
+                            <li><strong>Exit Procedures:</strong> Protecting secrets when employees leave</li>
+                        </ul>
+
+                        <h3>Common Trade Secrets</h3>
+                        <ul>
+                            <li>Manufacturing processes and formulas</li>
+                            <li>Customer lists and databases</li>
+                            <li>Pricing strategies and market analyses</li>
+                            <li>Research and development projects</li>
+                            <li>Business plans and financial information</li>
+                            <li>Software algorithms and source code</li>
+                        </ul>
+
+                        <h2>Patent Consultation</h2>
+                        <p>While I don't prosecute patents, I provide strategic counsel on patent-related business matters:</p>
+                        <ul>
+                            <li><strong>Patent Strategy:</strong> Developing comprehensive IP portfolios</li>
+                            <li><strong>Patent Licensing:</strong> Negotiating licensing agreements</li>
+                            <li><strong>Patent Assignments:</strong> Transferring patent ownership</li>
+                            <li><strong>Freedom to Operate:</strong> Analyzing patent landscape risks</li>
+                            <li><strong>Patent Litigation Support:</strong> Business strategy in patent disputes</li>
+                            <li><strong>Prior Art Analysis:</strong> Assessing patent validity</li>
+                        </ul>
+
+                        <h2>IP Licensing and Monetization</h2>
+                        <p>Turn your intellectual property into revenue streams through strategic licensing:</p>
+                        <ul>
+                            <li><strong>Licensing Strategy:</strong> Developing monetization plans</li>
+                            <li><strong>License Negotiation:</strong> Maximizing terms and royalties</li>
+                            <li><strong>Technology Transfer:</strong> University and research institution licensing</li>
+                            <li><strong>Cross-Licensing:</strong> Mutual licensing arrangements</li>
+                            <li><strong>Franchise Agreements:</strong> IP licensing for business expansion</li>
+                            <li><strong>Royalty Management:</strong> Monitoring and collecting payments</li>
+                        </ul>
+
+                        <h2>IP Due Diligence</h2>
+                        <p>Comprehensive IP analysis for business transactions and investments:</p>
+                        <ul>
+                            <li>IP asset identification and valuation</li>
+                            <li>Ownership verification and chain of title</li>
+                            <li>Freedom to operate analysis</li>
+                            <li>Infringement risk assessment</li>
+                            <li>Licensing agreement review</li>
+                            <li>IP portfolio optimization recommendations</li>
+                        </ul>
+
+                        <h2>Digital and Internet IP Issues</h2>
+                        <p>Modern IP protection requires understanding digital challenges:</p>
+                        <ul>
+                            <li><strong>Domain Name Disputes:</strong> UDRP proceedings and cybersquatting</li>
+                            <li><strong>Social Media Protection:</strong> Protecting brands on digital platforms</li>
+                            <li><strong>Online Infringement:</strong> E-commerce and marketplace enforcement</li>
+                            <li><strong>Website Terms of Use:</strong> Protecting digital content and data</li>
+                            <li><strong>App Store Issues:</strong> Mobile application IP protection</li>
+                            <li><strong>SEO and Trademark:</strong> Search engine optimization concerns</li>
+                        </ul>
+
+                        <h2>International IP Protection</h2>
+                        <p>Expanding globally requires international IP strategy:</p>
+                        <ul>
+                            <li>Madrid Protocol trademark filings</li>
+                            <li>Patent Cooperation Treaty (PCT) applications</li>
+                            <li>Foreign copyright registration</li>
+                            <li>International licensing and distribution</li>
+                            <li>Anti-counterfeiting strategies</li>
+                            <li>Import/export compliance</li>
+                        </ul>
+
+                        <h2>IP Enforcement and Litigation</h2>
+                        <p>When your IP rights are violated, swift action is essential:</p>
+                        <ul>
+                            <li><strong>Cease and Desist Letters:</strong> Cost-effective initial enforcement</li>
+                            <li><strong>Settlement Negotiations:</strong> Resolving disputes efficiently</li>
+                            <li><strong>Federal Court Litigation:</strong> Trademark and copyright enforcement</li>
+                            <li><strong>Opposition and Cancellation:</strong> USPTO proceedings</li>
+                            <li><strong>Customs Enforcement:</strong> Stopping counterfeit imports</li>
+                            <li><strong>Damages and Injunctions:</strong> Maximizing recovery</li>
+                        </ul>
+
+                        <div class="highlight-box">
+                            <h3><i class="fas fa-shield-alt"></i> Secure Your IP Rights Today</h3>
+                            <p>Don't wait until someone steals your ideas. Call 206-240-0442 or contact me online to discuss your intellectual property needs and develop a comprehensive protection strategy.</p>
+                        </div>
+                    </div>
+
+                    <aside class="contact-card">
+                        <h3>IP Protection Help</h3>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-item-content">
+                                <h4>Phone</h4>
+                                <a href="tel:206-240-0442">206-240-0442</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-item-content">
+                                <h4>Email</h4>
+                                <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-item-content">
+                                <h4>Serving</h4>
+                                <p>Seattle, King County<br>& Washington State</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="contact-item-content">
+                                <h4>Response Time</h4>
+                                <p>Within 24 hours</p>
+                            </div>
+                        </div>
+
+                        <a href="contact-us.html" class="consultation-btn">
+                            <i class="fas fa-calendar-check"></i>
+                            Schedule Free Consultation
+                        </a>
+
+                        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--dark-gray);">
+                            <h4 style="color: var(--gold); margin-bottom: 1rem; font-size: 1.1rem;">IP Protection Types</h4>
+                            <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+                                <li style="margin-bottom: 0.5rem; color: var(--silver);">• Trademarks</li>
+                                <li style="margin-bottom: 0.5rem; color: var(--silver);">• Copyrights</li>
+                                <li style="margin-bottom: 0.5rem; color: var(--silver);">• Trade Secrets</li>
+                                <li style="margin-bottom: 0.5rem; color: var(--silver);">• Patent Consultation</li>
+                                <li style="margin-bottom: 0.5rem; color: var(--silver);">• Licensing</li>
+                                <li style="margin-bottom: 0.5rem; color: var(--silver);">• Enforcement</li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Seattle Legal Advisor</h4>
+                    <p>Scott M. Haapala PLLC</p>
+                    <p>Straightforward Legal Advice for Businesses, Creatives, and Entrepreneurs in Washington State</p>
+                    <p style="margin-top: 1.5rem;">
+                        <strong>Ethical. Knowledgeable. Proactive.</strong><br>
+                        Business Law and Intellectual Property Attorney
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Practice Areas</h4>
+                    <a href="contract-law.html">Contract Law</a>
+                    <a href="business-formation.html">Business Formation</a>
+                    <a href="corporate-law.html">Corporate Law</a>
+                    <a href="mergers-acquisitions.html">Mergers & Acquisitions</a>
+                    <a href="intellectual-property.html">Intellectual Property</a>
+                    <a href="entertainment-law.html">Entertainment Law</a>
+                    <a href="estate-planning.html">Estate Planning</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Information</h4>
+                    <a href="tel:206-240-0442">206-240-0442</a>
+                    <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
+                    <p>12036 26th Ave South<br>Seattle, WA 98168</p>
+                    <p>Licensed in WA, DC, MD</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seattle Legal Advisor - Scott M. Haapala PLLC. All rights reserved.</p>
+                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">
+                    Attorney Advertising. Prior results do not guarantee similar outcomes.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Standard navigation and initialization code
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        function closeMobileMenu() {
+            if (navMenu) {
+                navMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            }
+        }
+
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    closeMobileMenu();
+                }
+            });
+        }
+
+        const header = document.getElementById('header');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.8s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        console.log('Seattle Legal Advisor - Intellectual Property page initialized successfully!');
+    </script>
+</body>
+</html>
