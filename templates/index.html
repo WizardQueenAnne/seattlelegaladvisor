@@ -9,44 +9,46 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-blue: #1e40af;
-            --light-blue: #3b82f6;
-            --dark-blue: #1e3a8a;
-            --navy: #0f172a;
-            --white: #ffffff;
-            --gray-50: #f8fafc;
-            --gray-100: #f1f5f9;
-            --gray-200: #e2e8f0;
-            --gray-300: #cbd5e1;
-            --gray-400: #94a3b8;
-            --gray-500: #64748b;
-            --gray-600: #475569;
-            --gray-700: #334155;
-            --gray-800: #1e293b;
-            --gray-900: #0f172a;
-            --accent-gold: #f59e0b;
-            --success: #10b981;
-            --error: #ef4444;
+            /* Art Deco Color Palette */
+            --primary-gold: #D4AF37;
+            --dark-gold: #B8941F;
+            --light-gold: #F4E99C;
+            --cream: #FDF6E3;
+            --charcoal: #2C2C2C;
+            --deep-navy: #1A1A2E;
+            --slate: #16213E;
+            --white: #FFFFFF;
+            --silver: #C0C0C0;
+            --accent-blue: #0F3460;
+            --rich-black: #0D1117;
             
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Crimson Text', Georgia, serif;
+            /* Typography */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
             
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            /* Spacing */
+            --section-padding: 120px;
+            --container-padding: 2rem;
             
-            --border-radius: 0.5rem;
-            --border-radius-lg: 1rem;
-            --border-radius-xl: 1.5rem;
+            /* Shadows */
+            --shadow-light: 0 4px 20px rgba(212, 175, 55, 0.15);
+            --shadow-medium: 0 8px 30px rgba(212, 175, 55, 0.25);
+            --shadow-heavy: 0 15px 50px rgba(0, 0, 0, 0.3);
+            
+            /* Borders */
+            --border-radius: 8px;
+            --border-radius-lg: 16px;
+            
+            /* Transitions */
+            --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         * {
@@ -61,57 +63,50 @@
         }
 
         body {
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            color: var(--gray-700);
-            background-color: var(--white);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            color: var(--charcoal);
+            background: var(--white);
             overflow-x: hidden;
         }
 
+        /* Art Deco Decorative Elements */
+        .art-deco-border {
+            position: relative;
+        }
+
+        .art-deco-border::before,
+        .art-deco-border::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+            height: 2px;
+            width: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .art-deco-border::before {
+            top: -20px;
+        }
+
+        .art-deco-border::after {
+            bottom: -20px;
+        }
+
+        .geometric-pattern {
+            background-image: 
+                linear-gradient(45deg, transparent 40%, var(--primary-gold) 42%, var(--primary-gold) 43%, transparent 45%),
+                linear-gradient(-45deg, transparent 40%, var(--primary-gold) 42%, var(--primary-gold) 43%, transparent 45%);
+            background-size: 20px 20px;
+            opacity: 0.05;
+        }
+
+        /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .container-sm {
-            max-width: 768px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .slide-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
+            padding: 0 var(--container-padding);
         }
 
         /* Header */
@@ -120,103 +115,145 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--gray-200);
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid var(--primary-gold);
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: var(--transition-smooth);
         }
 
         .header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: var(--shadow-md);
+            background: rgba(26, 26, 46, 0.98);
+            box-shadow: var(--shadow-medium);
         }
 
         .nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 80px;
-        }
-
-        .logo {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--navy);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .logo:hover {
-            color: var(--primary-blue);
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            color: var(--gray-600);
-            text-decoration: none;
-            transition: color 0.3s ease;
+            height: 90px;
             position: relative;
         }
 
-        .nav-link:hover {
-            color: var(--primary-blue);
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            position: relative;
         }
 
-        .nav-link::after {
+        .logo::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary-blue);
-            transition: width 0.3s ease;
+            background: var(--primary-gold);
+            transition: var(--transition-smooth);
         }
 
-        .nav-link:hover::after {
+        .logo:hover::after {
             width: 100%;
         }
 
-        .nav-cta {
-            background: var(--primary-blue);
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 500;
             color: var(--white);
-            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -10px;
+            right: -10px;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, var(--primary-gold), transparent);
+            opacity: 0;
+            transform: scaleX(0);
+            transition: var(--transition-smooth);
             border-radius: var(--border-radius);
+        }
+
+        .nav-link:hover::before {
+            opacity: 0.1;
+            transform: scaleX(1);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-gold);
+            transform: translateY(-2px);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--deep-navy);
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-lg);
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary-blue);
+            transition: var(--transition-bounce);
+            border: 2px solid var(--primary-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .nav-cta:hover::before {
+            left: 100%;
         }
 
         .nav-cta:hover {
-            background: var(--dark-blue);
-            border-color: var(--dark-blue);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-heavy);
         }
 
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            color: var(--gray-600);
+            color: var(--white);
             font-size: 1.5rem;
             cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--primary-gold);
+            transform: scale(1.1);
         }
 
         /* Hero Section */
         .hero {
-            padding: 140px 0 80px;
-            background: linear-gradient(135deg, var(--gray-50) 0%, rgba(30, 64, 175, 0.03) 100%);
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--deep-navy) 0%, var(--slate) 50%, var(--accent-blue) 100%);
+            display: flex;
+            align-items: center;
             position: relative;
             overflow: hidden;
         }
@@ -228,148 +265,268 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.5" fill="%23334155" opacity="0.1"/><circle cx="75" cy="75" r="0.5" fill="%23334155" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
-            opacity: 0.5;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="artDeco" patternUnits="userSpaceOnUse" width="20" height="20"><polygon points="10,0 20,10 10,20 0,10" fill="%23D4AF37" opacity="0.05"/></pattern></defs><rect width="100%" height="100%" fill="url(%23artDeco)"/></svg>');
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
+            text-align: center;
+            color: var(--white);
         }
 
-        .hero-header {
-            max-width: 800px;
-            text-align: center;
-            margin: 0 auto 3rem;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--primary-gold);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+            backdrop-filter: blur(10px);
         }
 
         .hero-title {
-            font-family: var(--font-serif);
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 600;
-            color: var(--navy);
-            line-height: 1.2;
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--white), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease 0.4s both;
         }
 
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.25rem);
-            color: var(--gray-600);
-            margin-bottom: 2rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto 3rem;
             line-height: 1.6;
+            animation: fadeInUp 0.8s ease 0.6s both;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease 0.8s both;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: var(--border-radius);
+            gap: 0.75rem;
+            padding: 1.25rem 2.5rem;
+            border-radius: var(--border-radius-lg);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            cursor: pointer;
+            font-size: 1.1rem;
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
-            background: var(--primary-blue);
-            color: var(--white);
-            border-color: var(--primary-blue);
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--deep-navy);
+            border: 2px solid var(--primary-gold);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
         }
 
         .btn-primary:hover {
-            background: var(--dark-blue);
-            border-color: var(--dark-blue);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-heavy);
         }
 
         .btn-secondary {
-            background: transparent;
-            color: var(--primary-blue);
-            border-color: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            background: var(--primary-blue);
-            color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--primary-gold);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-medium);
         }
 
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            margin-top: 4rem;
+            animation: fadeInUp 0.8s ease 1s both;
         }
 
         .stat-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 2.5rem 2rem;
             border-radius: var(--border-radius-lg);
             text-align: center;
-            border: 1px solid var(--gray-200);
-            transition: all 0.3s ease;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
         }
 
         .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--primary-gold);
+            box-shadow: var(--shadow-heavy);
         }
 
         .stat-number {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--primary-blue);
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-gold);
             margin-bottom: 0.5rem;
+            display: block;
         }
 
         .stat-label {
-            color: var(--gray-600);
+            color: rgba(255, 255, 255, 0.8);
             font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Floating Elements */
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            background: var(--primary-gold);
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            animation-delay: 2s;
+        }
+
+        .floating-shape:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 40%;
+            right: 5%;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            animation-delay: 4s;
         }
 
         /* About Section */
         .about {
-            padding: 80px 0;
-            background: var(--white);
+            padding: var(--section-padding) 0;
+            background: var(--cream);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="artDecoLines" patternUnits="userSpaceOnUse" width="50" height="50"><path d="M0,25 L50,25 M25,0 L25,50" stroke="%23D4AF37" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23artDecoLines)"/></svg>');
         }
 
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-            margin-bottom: 4rem;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
         .about-text h2 {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--dark-gold));
+            border-radius: 2px;
         }
 
         .lead {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 500;
-            color: var(--primary-blue);
+            color: var(--accent-blue);
             margin-bottom: 2rem;
             line-height: 1.6;
         }
@@ -377,29 +534,30 @@
         .about-text p {
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--gray-600);
+            line-height: 1.8;
+            color: var(--charcoal);
         }
 
         .about-card {
-            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            background: linear-gradient(135deg, var(--deep-navy), var(--slate));
             color: var(--white);
-            padding: 3rem 2.5rem;
-            border-radius: var(--border-radius-xl);
+            padding: 4rem 3rem;
+            border-radius: var(--border-radius-lg);
             position: relative;
             overflow: hidden;
+            border: 2px solid var(--primary-gold);
         }
 
         .about-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transform: translate(30px, -30px);
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s ease-in-out infinite;
         }
 
         .about-card-content {
@@ -408,280 +566,419 @@
         }
 
         .about-card h3 {
-            font-family: var(--font-serif);
-            font-size: 1.75rem;
+            font-family: var(--font-heading);
+            font-size: 2rem;
             margin-bottom: 1rem;
+            color: var(--primary-gold);
         }
 
         .about-card p {
             opacity: 0.9;
-            line-height: 1.6;
-            margin-bottom: 2rem;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
         }
 
         .contact-info {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 2.5rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
             font-weight: 500;
+            transition: var(--transition-smooth);
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .contact-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(10px);
         }
 
         .contact-item i {
-            width: 20px;
-            opacity: 0.8;
+            width: 24px;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
         }
 
         .contact-item a {
             color: var(--white);
             text-decoration: none;
-            transition: opacity 0.3s ease;
+            transition: var(--transition-smooth);
         }
 
         .contact-item a:hover {
-            opacity: 0.8;
+            color: var(--primary-gold);
         }
 
         /* Services Section */
         .services {
-            padding: 80px 0;
-            background: var(--gray-50);
+            padding: var(--section-padding) 0;
+            background: var(--white);
+            position: relative;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
+            position: relative;
         }
 
         .section-header h2 {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-header h2::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
         }
 
         .section-header p {
             font-size: 1.25rem;
-            color: var(--gray-600);
-            max-width: 600px;
+            color: var(--charcoal);
+            max-width: 700px;
             margin: 0 auto;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
         }
 
         .service-card {
             background: var(--white);
-            padding: 2.5rem;
+            padding: 3rem;
             border-radius: var(--border-radius-lg);
-            border: 1px solid var(--gray-200);
-            transition: all 0.3s ease;
+            border: 2px solid var(--cream);
+            transition: var(--transition-smooth);
             position: relative;
             overflow: hidden;
+            group: hover;
         }
 
         .service-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
-            background: var(--primary-blue);
-            transition: height 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--primary-blue);
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            opacity: 0.05;
+            transition: var(--transition-smooth);
         }
 
         .service-card:hover::before {
-            height: 100%;
+            left: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary-gold);
+            box-shadow: var(--shadow-heavy);
         }
 
         .service-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
-            color: var(--white);
-            border-radius: var(--border-radius-lg);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--deep-navy);
+            border-radius: 50%;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            transition: var(--transition-bounce);
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotate(360deg) scale(1.1);
         }
 
         .service-card h3 {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
             font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 1rem;
+            color: var(--deep-navy);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
         }
 
         .service-card p {
-            color: var(--gray-600);
-            line-height: 1.7;
+            color: var(--charcoal);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 2;
         }
 
         /* Experience Section */
         .experience {
-            padding: 80px 0;
-            background: var(--white);
+            padding: var(--section-padding) 0;
+            background: linear-gradient(135deg, var(--deep-navy) 0%, var(--slate) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="artDecoCircles" patternUnits="userSpaceOnUse" width="30" height="30"><circle cx="15" cy="15" r="1" fill="%23D4AF37" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23artDecoCircles)"/></svg>');
         }
 
         .experience-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 5rem;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
         .experience-text h2 {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 1.5rem;
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--white);
+            position: relative;
+        }
+
+        .experience-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--dark-gold));
+            border-radius: 2px;
         }
 
         .experience-text p {
             font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--gray-600);
+            line-height: 1.8;
             margin-bottom: 1.5rem;
+            opacity: 0.9;
         }
 
         .credentials {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .credential {
-            padding: 1.5rem;
-            background: var(--gray-50);
-            border-radius: var(--border-radius);
-            border-left: 4px solid var(--primary-blue);
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            border-left: 4px solid var(--primary-gold);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-smooth);
+        }
+
+        .credential:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: var(--shadow-medium);
         }
 
         .credential h4 {
             font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
         }
 
         .credential p {
-            color: var(--gray-600);
-            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.6;
         }
 
         /* Contact Section */
         .contact {
-            padding: 80px 0;
-            background: var(--navy);
+            padding: var(--section-padding) 0;
+            background: var(--charcoal);
             color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="contactPattern" patternUnits="userSpaceOnUse" width="40" height="40"><polygon points="20,5 35,20 20,35 5,20" fill="%23D4AF37" opacity="0.03"/></pattern></defs><rect width="100%" height="100%" fill="url(%23contactPattern)"/></svg>');
         }
 
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 5rem;
             align-items: start;
+            position: relative;
+            z-index: 2;
         }
 
         .contact-info h2 {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--white);
+            position: relative;
+        }
+
+        .contact-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--dark-gold));
+            border-radius: 2px;
         }
 
         .contact-info p {
             font-size: 1.1rem;
-            line-height: 1.7;
+            line-height: 1.8;
             opacity: 0.9;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .contact-details {
-            margin: 2rem 0;
+            margin: 3rem 0;
         }
 
         .contact-detail {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius);
-            transition: background 0.3s ease;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
         }
 
         .contact-detail:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(212, 175, 55, 0.15);
+            transform: translateX(10px);
+            border-color: var(--primary-gold);
         }
 
         .contact-detail i {
-            color: var(--accent-gold);
-            font-size: 1.25rem;
-            width: 24px;
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
         }
 
         .contact-detail-content h4 {
             font-weight: 600;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-gold);
         }
 
-        .contact-detail-content a {
+        .contact-detail-content a,
+        .contact-detail-content p {
             color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: var(--transition-smooth);
         }
 
         .contact-detail-content a:hover {
-            color: var(--accent-gold);
+            color: var(--primary-gold);
         }
 
         /* Form */
         .form-container {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border-radius: var(--border-radius-xl);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 3.5rem;
+            border-radius: var(--border-radius-lg);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+            pointer-events: none;
         }
 
         .form-container h3 {
-            font-family: var(--font-serif);
-            font-size: 1.75rem;
-            margin-bottom: 2rem;
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
             text-align: center;
+            color: var(--white);
+            position: relative;
+            z-index: 2;
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
         }
 
         .form-group.full-width {
@@ -690,23 +987,25 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             font-weight: 500;
             color: var(--white);
+            font-size: 1.05rem;
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.25rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: var(--border-radius);
             background: rgba(255, 255, 255, 0.1);
             color: var(--white);
             font-family: inherit;
             font-size: 1rem;
-            transition: all 0.3s ease;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
         }
 
         .form-group input::placeholder,
@@ -718,52 +1017,73 @@
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--accent-gold);
+            border-color: var(--primary-gold);
             background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
         }
 
         .form-group textarea {
-            min-height: 120px;
+            min-height: 140px;
             resize: vertical;
         }
 
         .checkbox-group {
             display: flex;
             align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 2rem;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 2;
         }
 
         .checkbox-group input[type="checkbox"] {
             width: auto;
             margin: 0;
+            transform: scale(1.2);
         }
 
         .checkbox-group label {
             margin: 0;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            line-height: 1.6;
             opacity: 0.9;
         }
 
         .submit-btn {
             width: 100%;
-            background: var(--accent-gold);
-            color: var(--navy);
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--deep-navy);
             border: none;
-            padding: 1rem 2rem;
-            border-radius: var(--border-radius);
+            padding: 1.5rem 2rem;
+            border-radius: var(--border-radius-lg);
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
         }
 
         .submit-btn:hover {
-            background: #d97706;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: var(--shadow-heavy);
         }
 
         .submit-btn:disabled {
@@ -772,78 +1092,204 @@
             transform: none;
         }
 
+        /* Form Message Styles */
+        .form-message {
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: var(--border-radius-lg);
+            font-weight: 500;
+            text-align: center;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-message.success {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .form-message.error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 2px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s ease-in-out infinite;
+        }
+
         /* Footer */
         .footer {
-            background: var(--gray-900);
-            color: var(--gray-400);
-            padding: 3rem 0 1rem;
+            background: var(--rich-black);
+            color: var(--silver);
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 2rem;
+            gap: 4rem;
+            margin-bottom: 3rem;
         }
 
         .footer-section h4 {
             color: var(--white);
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--primary-gold);
         }
 
         .footer-section p,
         .footer-section a {
-            color: var(--gray-400);
+            color: var(--silver);
             text-decoration: none;
-            line-height: 1.6;
-            transition: color 0.3s ease;
+            line-height: 1.7;
+            transition: var(--transition-smooth);
+            margin-bottom: 0.5rem;
+            display: block;
         }
 
         .footer-section a:hover {
-            color: var(--white);
+            color: var(--primary-gold);
+            transform: translateX(5px);
         }
 
         .footer-bottom {
-            border-top: 1px solid var(--gray-800);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
             padding-top: 2rem;
             text-align: center;
-            color: var(--gray-500);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            50% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+        }
+
+        @keyframes spin {
+            to { 
+                transform: rotate(360deg); 
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .hero-content,
-            .about-content,
-            .experience-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+        @media (max-width: 1200px) {
+            :root {
+                --section-padding: 80px;
+                --container-padding: 1.5rem;
             }
 
             .services-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             }
         }
 
         @media (max-width: 768px) {
             .nav-menu {
                 position: fixed;
-                top: 80px;
+                top: 90px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 80px);
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
+                height: calc(100vh - 90px);
+                background: rgba(26, 26, 46, 0.98);
+                backdrop-filter: blur(20px);
                 flex-direction: column;
                 justify-content: flex-start;
-                padding: 2rem;
-                transition: left 0.3s ease;
-                box-shadow: var(--shadow-lg);
+                padding: 3rem 2rem;
+                transition: left 0.4s ease;
+                box-shadow: var(--shadow-heavy);
+                gap: 2rem;
             }
 
             .nav-menu.active {
@@ -855,11 +1301,8 @@
             }
 
             .hero {
-                padding: 120px 0 60px;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
+                padding: 120px 0 80px;
+                min-height: auto;
             }
 
             .hero-buttons {
@@ -875,36 +1318,42 @@
 
             .hero-stats {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
+                gap: 1.5rem;
+            }
+
+            .about-content,
+            .experience-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
             .form-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
-            .service-card,
+            .service-card {
+                padding: 2.5rem 2rem;
+            }
+
             .stat-card {
                 padding: 2rem 1.5rem;
             }
 
-            .section-header h2,
-            .about-text h2,
-            .experience-text h2,
-            .contact-info h2 {
-                font-size: 2rem;
-            }
-
-            .about, .services, .experience, .contact {
-                padding: 60px 0;
+            :root {
+                --section-padding: 60px;
             }
         }
 
@@ -913,87 +1362,50 @@
                 padding: 0 1rem;
             }
 
-            .hero-title {
-                font-size: 2rem;
-            }
-
             .hero-stats {
                 grid-template-columns: 1fr;
             }
 
             .form-container {
-                padding: 2rem 1.5rem;
+                padding: 2.5rem 2rem;
             }
 
             .about-card,
             .service-card {
                 padding: 2rem 1.5rem;
             }
-        }
 
-        /* Form Message Styles */
-        .form-message {
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: var(--border-radius);
-            font-weight: 500;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .form-message.success {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .form-message.error {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--error);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--white);
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Smooth reveal animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+            .services-grid {
+                grid-template-columns: 1fr;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            .service-card {
+                min-width: auto;
             }
         }
 
-        .hero-content > * {
-            animation: fadeInUp 0.8s ease forwards;
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
         }
 
-        .hero-header {
-            animation-delay: 0.2s;
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .hero-buttons {
-            animation-delay: 0.4s;
+        /* Intersection Observer Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero-stats {
-            animation-delay: 0.6s;
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -1019,38 +1431,48 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="floating-shapes">
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+        </div>
+        
         <div class="container">
             <div class="hero-content">
-                <div class="hero-header fade-in">
-                    <h1 class="hero-title">Straightforward Legal Advice for Businesses, Creatives, and Entrepreneurs</h1>
-                    <p class="hero-subtitle">
-                        I'm Scott Haapala, a Seattle-based attorney who helps individuals and businesses navigate legal matters with clarity and confidence. Whether you're forming a new company, negotiating a contract, or preparing to sell your business, I offer practical, responsive legal support tailored to your specific goals.
-                    </p>
+                <div class="hero-badge">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>Licensed in WA, DC & MD</span>
                 </div>
+                
+                <h1 class="hero-title">Straightforward Legal Advice for Businesses, Creatives, and Entrepreneurs</h1>
+                
+                <p class="hero-subtitle">
+                    I'm Scott Haapala, a Seattle-based attorney who helps individuals and businesses navigate legal matters with clarity and confidence. Whether you're forming a new company, negotiating a contract, or preparing to sell your business, I offer practical, responsive legal support tailored to your specific goals.
+                </p>
 
-                <div class="hero-buttons fade-in">
+                <div class="hero-buttons">
                     <a href="tel:206-240-0442" class="btn btn-primary">
                         <i class="fas fa-phone"></i>
                         Call 206-240-0442
                     </a>
                     <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-calendar"></i>
+                        <i class="fas fa-calendar-check"></i>
                         Free Consultation
                     </a>
                 </div>
 
-                <div class="hero-stats fade-in">
+                <div class="hero-stats">
                     <div class="stat-card">
-                        <div class="stat-number">37+</div>
+                        <div class="stat-number" data-target="37">0</div>
                         <div class="stat-label">Years Experience</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">3</div>
+                        <div class="stat-number" data-target="3">0</div>
                         <div class="stat-label">States Licensed</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Client Focused</div>
+                        <div class="stat-number" data-target="100">0</div>
+                        <div class="stat-label">% Client Focused</div>
                     </div>
                 </div>
             </div>
@@ -1061,7 +1483,7 @@
     <section id="about" class="about">
         <div class="container">
             <div class="about-content">
-                <div class="about-text slide-in-left">
+                <div class="about-text slide-in-left animate-on-scroll">
                     <h2>A Personalized Legal Approach That Puts You First</h2>
                     <p class="lead">
                         At Seattle Legal Advisor, I bring firsthand experience as both a lawyer and business owner. I've started, run, and advised businesses across industries—and I know how important it is to have someone in your corner who can explain the legal fine print and protect your interests.
@@ -1074,7 +1496,7 @@
                     </p>
                 </div>
 
-                <div class="about-card slide-in-right">
+                <div class="about-card slide-in-right animate-on-scroll">
                     <div class="about-card-content">
                         <h3>Scott M. Haapala, ESQ</h3>
                         <p>
@@ -1104,7 +1526,7 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="section-header animate-on-scroll">
                 <h2>Legal Services Rooted in Strategy and Clarity</h2>
                 <p>
                     My practice focuses on helping clients make smart, informed decisions across a comprehensive range of legal areas.
@@ -1112,7 +1534,7 @@
             </div>
 
             <div class="services-grid">
-                <div class="service-card fade-in">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <i class="fas fa-file-contract"></i>
                     </div>
@@ -1122,7 +1544,7 @@
                     </p>
                 </div>
 
-                <div class="service-card fade-in">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <i class="fas fa-building"></i>
                     </div>
@@ -1132,7 +1554,7 @@
                     </p>
                 </div>
 
-                <div class="service-card fade-in">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
@@ -1142,7 +1564,7 @@
                     </p>
                 </div>
 
-                <div class="service-card fade-in">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <i class="fas fa-exchange-alt"></i>
                     </div>
@@ -1152,7 +1574,7 @@
                     </p>
                 </div>
 
-                <div class="service-card fade-in">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <i class="fas fa-route"></i>
                     </div>
@@ -1162,7 +1584,7 @@
                     </p>
                 </div>
 
-                <div class="service-card fade-in">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <i class="fas fa-lightbulb"></i>
                     </div>
@@ -1172,7 +1594,7 @@
                     </p>
                 </div>
 
-                <div class="service-card fade-in">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <i class="fas fa-music"></i>
                     </div>
@@ -1182,7 +1604,7 @@
                     </p>
                 </div>
 
-                <div class="service-card fade-in">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <i class="fas fa-balance-scale"></i>
                     </div>
@@ -1199,7 +1621,7 @@
     <section class="experience">
         <div class="container">
             <div class="experience-content">
-                <div class="experience-text slide-in-left">
+                <div class="experience-text slide-in-left animate-on-scroll">
                     <h2>Experience You Can Trust</h2>
                     <p>
                         If you're looking for a law firm that combines big-picture thinking with fine-detail execution, you're in the right place. I have a thorough understanding of Washington law and know first-hand the trials and tribulations that come with being a business owner.
@@ -1209,7 +1631,7 @@
                     </p>
                 </div>
 
-                <div class="credentials slide-in-right">
+                <div class="credentials slide-in-right animate-on-scroll">
                     <div class="credential">
                         <h4>Education</h4>
                         <p>University of Washington School of Law Graduate (2000)</p>
@@ -1235,7 +1657,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="contact-content">
-                <div class="contact-info slide-in-left">
+                <div class="contact-info slide-in-left animate-on-scroll">
                     <h2>Let's Talk About Your Next Step</h2>
                     <p>
                         Whether you're just getting started or facing a complex legal issue, I'm here to help. When you retain the services of Seattle Legal Advisor, you can be assured that your attorney is fully qualified to take on your case.
@@ -1276,7 +1698,7 @@
                     </div>
                 </div>
 
-                <div class="form-container slide-in-right">
+                <div class="form-container slide-in-right animate-on-scroll">
                     <h3>Request a Free Consultation</h3>
                     <form id="contact-form">
                         <div class="form-grid">
@@ -1348,6 +1770,7 @@
                         </div>
 
                         <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
                             Send Message
                         </button>
                     </form>
@@ -1364,7 +1787,7 @@
                     <h4>Seattle Legal Advisor</h4>
                     <p>Scott M. Haapala PLLC</p>
                     <p>Straightforward Legal Advice for Businesses, Creatives, and Entrepreneurs in Washington State</p>
-                    <p style="margin-top: 1rem;">
+                    <p style="margin-top: 1.5rem;">
                         <strong>Ethical. Knowledgeable. Proactive.</strong><br>
                         Business Law and Intellectual Property Attorney
                     </p>
@@ -1372,19 +1795,19 @@
 
                 <div class="footer-section">
                     <h4>Practice Areas</h4>
-                    <p><a href="#services">Contract Law</a></p>
-                    <p><a href="#services">Business Formation</a></p>
-                    <p><a href="#services">Corporate Law</a></p>
-                    <p><a href="#services">Mergers & Acquisitions</a></p>
-                    <p><a href="#services">Intellectual Property</a></p>
-                    <p><a href="#services">Entertainment Law</a></p>
-                    <p><a href="#services">Estate Planning</a></p>
+                    <a href="#services">Contract Law</a>
+                    <a href="#services">Business Formation</a>
+                    <a href="#services">Corporate Law</a>
+                    <a href="#services">Mergers & Acquisitions</a>
+                    <a href="#services">Intellectual Property</a>
+                    <a href="#services">Entertainment Law</a>
+                    <a href="#services">Estate Planning</a>
                 </div>
 
                 <div class="footer-section">
                     <h4>Contact Information</h4>
-                    <p><a href="tel:206-240-0442">206-240-0442</a></p>
-                    <p><a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a></p>
+                    <a href="tel:206-240-0442">206-240-0442</a>
+                    <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
                     <p>Licensed in WA, DC, MD</p>
                     <p>Serving Washington State</p>
                 </div>
@@ -1400,29 +1823,47 @@
     </footer>
 
     <script>
-        // Mobile Navigation
+        // Enhanced Mobile Navigation
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-link');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        // Close mobile menu when clicking on a link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
                 const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                }
             });
-        });
 
-        // Header scroll effect
+            // Close mobile menu when clicking on a link
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                }
+            });
+        }
+
+        // Enhanced Header scroll effect
         const header = document.getElementById('header');
         let lastScrollY = window.scrollY;
 
@@ -1451,7 +1892,7 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const headerOffset = 80;
+                    const headerOffset = 90;
                     const elementPosition = target.offsetTop;
                     const offsetPosition = elementPosition - headerOffset;
 
@@ -1459,88 +1900,180 @@
                         top: offsetPosition,
                         behavior: 'smooth'
                     });
+
+                    // Close mobile menu if open
+                    if (navMenu && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    }
                 }
             });
         });
 
-        // Intersection Observer for animations
+        // Enhanced Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    // Add staggered delay for service cards
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    
+                    // Trigger number animation for stat cards
+                    if (entry.target.classList.contains('stat-card')) {
+                        const statNumber = entry.target.querySelector('.stat-number');
+                        if (statNumber && !statNumber.dataset.animated) {
+                            animateStatNumber(statNumber);
+                            statNumber.dataset.animated = 'true';
+                        }
+                    }
                 }
             });
         }, observerOptions);
 
         // Observe all animated elements
-        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+        document.querySelectorAll('.animate-on-scroll, .stat-card').forEach(el => {
             observer.observe(el);
         });
 
-        // Contact form handling
-        const contactForm = document.getElementById('contact-form');
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
+        // Enhanced stat number animation
+        function animateStatNumber(element) {
+            const target = parseInt(element.dataset.target) || parseInt(element.textContent.replace(/\D/g, ''));
+            const suffix = element.textContent.includes('%') ? '%' : (element.textContent.includes('+') ? '+' : '');
             
-            const formData = new FormData(contactForm);
-            const data = {
-                name: formData.get('name'),
-                company: formData.get('company'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                city: formData.get('city'),
-                state: formData.get('state'),
-                how_found: formData.get('how_found'),
-                contact_method: formData.get('contact_method'),
-                message: formData.get('message'),
-                disclaimer: formData.get('disclaimer')
-            };
-
-            // Validate required fields
-            if (!data.name || !data.email || !data.phone || !data.message || !data.disclaimer) {
-                showMessage('Please fill in all required fields and agree to the disclaimer.', 'error');
-                return;
-            }
-
-            const submitButton = contactForm.querySelector('.submit-btn');
-            const originalText = submitButton.innerHTML;
+            let current = 0;
+            const increment = target / 100;
+            const duration = 2000;
+            const stepTime = duration / 100;
             
-            // Show loading state
-            submitButton.innerHTML = '<span class="loading"></span> Sending...';
-            submitButton.disabled = true;
-
-            try {
-                const response = await fetch('/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    showMessage(result.message, 'success');
-                    contactForm.reset();
-                } else {
-                    showMessage(result.message, 'error');
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
                 }
-            } catch (error) {
-                showMessage('There was an error sending your message. Please try again or call directly at 206-240-0442.', 'error');
-            } finally {
-                // Reset button
-                submitButton.innerHTML = originalText;
-                submitButton.disabled = false;
-            }
-        });
+                element.textContent = Math.floor(current) + suffix;
+            }, stepTime);
+        }
 
-        // Show message function
+        // Enhanced contact form handling
+        const contactForm = document.getElementById('contact-form');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(contactForm);
+                const data = {
+                    name: formData.get('name'),
+                    company: formData.get('company'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    city: formData.get('city'),
+                    state: formData.get('state'),
+                    how_found: formData.get('how_found'),
+                    contact_method: formData.get('contact_method'),
+                    message: formData.get('message'),
+                    disclaimer: formData.get('disclaimer')
+                };
+
+                // Enhanced client-side validation
+                const validation = validateForm(data);
+                if (!validation.isValid) {
+                    showMessage(validation.message, 'error');
+                    return;
+                }
+
+                const submitButton = contactForm.querySelector('.submit-btn');
+                const originalHTML = submitButton.innerHTML;
+                
+                // Show loading state
+                submitButton.innerHTML = '<span class="loading"></span> Sending Message...';
+                submitButton.disabled = true;
+
+                try {
+                    const response = await fetch('/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        showMessage(result.message, 'success');
+                        contactForm.reset();
+                        
+                        // Add success animation
+                        submitButton.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                        submitButton.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                        
+                        setTimeout(() => {
+                            submitButton.innerHTML = originalHTML;
+                            submitButton.style.background = 'linear-gradient(135deg, var(--primary-gold), var(--dark-gold))';
+                            submitButton.disabled = false;
+                        }, 3000);
+                    } else {
+                        showMessage(result.message, 'error');
+                        submitButton.innerHTML = originalHTML;
+                        submitButton.disabled = false;
+                    }
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    showMessage('There was an error sending your message. Please try again or call directly at 206-240-0442.', 'error');
+                    submitButton.innerHTML = originalHTML;
+                    submitButton.disabled = false;
+                }
+            });
+        }
+
+        // Enhanced form validation
+        function validateForm(data) {
+            if (!data.name || data.name.length < 2) {
+                return { isValid: false, message: 'Please provide a valid name (at least 2 characters).' };
+            }
+
+            if (!data.email || !isValidEmail(data.email)) {
+                return { isValid: false, message: 'Please provide a valid email address.' };
+            }
+
+            if (!data.phone || !isValidPhone(data.phone)) {
+                return { isValid: false, message: 'Please provide a valid phone number (at least 10 digits).' };
+            }
+
+            if (!data.message || data.message.length < 10) {
+                return { isValid: false, message: 'Please provide more details about your legal needs (at least 10 characters).' };
+            }
+
+            if (!data.disclaimer) {
+                return { isValid: false, message: 'Please agree to the disclaimer to continue.' };
+            }
+
+            return { isValid: true, message: 'Form is valid' };
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhone(phone) {
+            const phoneDigits = phone.replace(/\D/g, '');
+            return phoneDigits.length >= 10;
+        }
+
+        // Enhanced message display
         function showMessage(message, type) {
             // Remove any existing messages
             const existingMessage = document.querySelector('.form-message');
@@ -1551,77 +2084,175 @@
             // Create new message element
             const messageEl = document.createElement('div');
             messageEl.className = `form-message ${type}`;
-            messageEl.textContent = message;
+            messageEl.innerHTML = `
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i>
+                ${message}
+            `;
             
             // Insert message before the form
             contactForm.parentNode.insertBefore(messageEl, contactForm);
 
-            // Auto-remove after 5 seconds
+            // Animate in
             setTimeout(() => {
-                if (messageEl) {
+                messageEl.style.opacity = '1';
+                messageEl.style.transform = 'translateY(0)';
+            }, 100);
+
+            // Auto-remove after 8 seconds
+            setTimeout(() => {
+                if (messageEl && messageEl.parentNode) {
                     messageEl.style.opacity = '0';
-                    messageEl.style.transform = 'translateY(-10px)';
-                    setTimeout(() => messageEl.remove(), 300);
-                }
-            }, 5000);
-        }
-
-        // Add some interactive enhancements
-        document.addEventListener('DOMContentLoaded', () => {
-            // Animate stat numbers
-            const statNumbers = document.querySelectorAll('.stat-number');
-            const animateNumbers = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const target = entry.target;
-                        const finalValue = target.textContent.replace(/\D/g, '');
-                        if (finalValue) {
-                            animateValue(target, 0, parseInt(finalValue), 2000);
+                    messageEl.style.transform = 'translateY(-20px)';
+                    setTimeout(() => {
+                        if (messageEl.parentNode) {
+                            messageEl.remove();
                         }
-                        observer.unobserve(target);
-                    }
-                });
-            };
-
-            const numberObserver = new IntersectionObserver(animateNumbers, {
-                threshold: 0.5
-            });
-
-            statNumbers.forEach(number => {
-                numberObserver.observe(number);
-            });
-        });
-
-        function animateValue(element, start, end, duration) {
-            const startTimestamp = performance.now();
-            const step = (timestamp) => {
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const currentValue = Math.floor(progress * (end - start) + start);
-                
-                if (element.textContent.includes('+')) {
-                    element.textContent = currentValue + '+';
-                } else if (element.textContent.includes('%')) {
-                    element.textContent = currentValue + '%';
-                } else {
-                    element.textContent = currentValue;
+                    }, 300);
                 }
-                
-                if (progress < 1) {
-                    requestAnimationFrame(step);
-                }
-            };
-            requestAnimationFrame(step);
+            }, 8000);
         }
 
-        // Add hover effects to service cards
+        // Enhanced service card interactions
         const serviceCards = document.querySelectorAll('.service-card');
-        serviceCards.forEach(card => {
+        serviceCards.forEach((card, index) => {
+            // Stagger animation delays
+            card.style.setProperty('--delay', `${index * 0.1}s`);
+            
+            // Enhanced hover effects
             card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-8px) scale(1.02)';
+                card.style.transform = 'translateY(-15px) scale(1.03)';
+                card.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.2)';
             });
             
             card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(-5px) scale(1)';
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+                card.style.boxShadow = 'var(--shadow-heavy)';
+            });
+        });
+
+        // Phone number formatting
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 6) {
+                    value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+                } else if (value.length >= 3) {
+                    value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+                }
+                e.target.value = value;
+            });
+        }
+
+        // Enhanced form field interactions
+        const formInputs = document.querySelectorAll('input, textarea, select');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.3s ease';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+
+            // Real-time validation feedback
+            input.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.style.borderColor = '#ef4444';
+                    this.style.boxShadow = '0 0 0 4px rgba(239, 68, 68, 0.2)';
+                } else if (this.type === 'email' && this.value && !isValidEmail(this.value)) {
+                    this.style.borderColor = '#ef4444';
+                    this.style.boxShadow = '0 0 0 4px rgba(239, 68, 68, 0.2)';
+                } else if (this.id === 'phone' && this.value && !isValidPhone(this.value)) {
+                    this.style.borderColor = '#ef4444';
+                    this.style.boxShadow = '0 0 0 4px rgba(239, 68, 68, 0.2)';
+                } else {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    this.style.boxShadow = 'none';
+                }
+            });
+        });
+
+        // Parallax effect for floating shapes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.floating-shape');
+            
+            shapes.forEach((shape, index) => {
+                const speed = 0.5 + (index * 0.2);
+                shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fade in page content
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.8s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+
+            // Initialize stat number animations when visible
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(number => {
+                const target = parseInt(number.dataset.target);
+                if (target) {
+                    number.textContent = '0';
+                }
+            });
+
+            // Add staggered animations for service cards
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Keyboard accessibility improvements
+        document.addEventListener('keydown', (e) => {
+            // Escape key closes mobile menu
+            if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            }
+        });
+
+        // Performance optimization: Debounce scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Add error boundary for JavaScript errors
+        window.addEventListener('error', (e) => {
+            console.error('JavaScript error:', e.error);
+        });
+
+        // Add loading states for better UX
+        window.addEventListener('load', () => {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (!img.complete) {
+                    img.style.opacity = '0';
+                    img.addEventListener('load', () => {
+                        img.style.transition = 'opacity 0.5s ease';
+                        img.style.opacity = '1';
+                    });
+                }
             });
         });
     </script>
