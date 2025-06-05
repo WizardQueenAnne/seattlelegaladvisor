@@ -310,7 +310,7 @@
                             <i class="fas fa-file-contract"></i>
                         </div>
                         <h3>Contract Law</h3>
-                        <p>For your business to succeed, it is essential that you are represented by a knowledgeable contract law attorney.</p>
+                        <p>For your business to succeed, it is essential that you are represented by a knowledgeable contract law attorney. I guide you through negotiation, drafting and review of contracts.</p>
                         <a href="contract-law.html" class="learn-more-btn" onclick="event.stopPropagation()">
                             Learn More <i class="fas fa-arrow-right"></i>
                         </a>
@@ -452,7 +452,7 @@
     </footer>
 
     <script>
-        // Standard navigation and initialization code (same as other pages)
+        // Standard navigation and initialization code
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const navMenu = document.getElementById('nav-menu');
 
@@ -512,5 +512,15 @@
             setTimeout(() => {
                 document.body.style.opacity = '1';
             }, 100);
+        });
 
-            const
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        console.log('Seattle Legal Advisor - Practice Areas page initialized successfully!');
+    </script>
+</body>
+</html>
