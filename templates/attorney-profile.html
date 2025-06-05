@@ -830,4 +830,114 @@
                         <strong>Ethical. Knowledgeable. Proactive.</strong><br>
                         Business Law and Intellectual Property Attorney
                     </p>
-                </div
+                </div>
+
+                <div class="footer-section">
+                    <h4>Practice Areas</h4>
+                    <a href="contract-law.html">Contract Law</a>
+                    <a href="business-formation.html">Business Formation</a>
+                    <a href="corporate-law.html">Corporate Law</a>
+                    <a href="mergers-acquisitions.html">Mergers & Acquisitions</a>
+                    <a href="intellectual-property.html">Intellectual Property</a>
+                    <a href="entertainment-law.html">Entertainment Law</a>
+                    <a href="estate-planning.html">Estate Planning</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Information</h4>
+                    <a href="tel:206-240-0442">206-240-0442</a>
+                    <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
+                    <p>12036 26th Ave South<br>Seattle, WA 98168</p>
+                    <p>Licensed in WA, DC, MD</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seattle Legal Advisor - Scott M. Haapala PLLC. All rights reserved.</p>
+                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">
+                    Attorney Advertising. Prior results do not guarantee similar outcomes.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        function closeMobileMenu() {
+            if (navMenu) {
+                navMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            }
+        }
+
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                }
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    closeMobileMenu();
+                }
+            });
+        }
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Hide/show header on scroll
+            if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fade in page content
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.8s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Keyboard accessibility improvements
+        document.addEventListener('keydown', (e) => {
+            // Escape key closes mobile menu
+            if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        console.log('Seattle Legal Advisor - Attorney Profile page initialized successfully!');
+    </script>
+</body>
+</html>
