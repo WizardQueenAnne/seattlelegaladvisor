@@ -1,1 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closely Held Business Attorney | Seattle Private Company Lawyer</title>
+    <meta name="description" content="Closely held businesses may face many issues, including succession, mergers and acquisitions, buy-sell agreements, tax issues and more. I am dedicated to helping you and your business succeed.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --rich-black: #000000; --deep-black: #0A0A0A; --charcoal: #1A1A1A; --dark-gray: #2D2D2D;
+            --medium-gray: #404040; --light-gray: #666666; --gold: #FFD700; --dark-gold: #B8860B;
+            --light-gold: #FFF8DC; --cream: #FFFDD0; --white: #FFFFFF; --silver: #C0C0C0;
+            --font-heading: 'Playfair Display', serif; --font-body: 'Inter', sans-serif;
+            --section-padding: 100px; --container-padding: 2rem; --shadow-gold: 0 4px 20px rgba(255, 215, 0, 0.3);
+            --shadow-dark: 0 8px 30px rgba(0, 0, 0, 0.5); --shadow-heavy: 0 15px 50px rgba(0, 0, 0, 0.7);
+            --border-radius: 8px; --border-radius-lg: 16px; --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-body); line-height: 1.7; color: var(--white); background: var(--rich-black); overflow-x: hidden; }
+
+        .geometric-bg { position: relative; overflow: hidden; }
+        .geometric-bg::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(45deg, transparent 40%, var(--gold) 41%, var(--gold) 42%, transparent 43%),
+                linear-gradient(-45deg, transparent 40%, var(--gold) 41%, var(--gold) 42%, transparent 43%),
+                linear-gradient(90deg, transparent 48%, var(--gold) 49%, var(--gold) 50%, transparent 51%);
+            background-size: 60px 60px, 60px 60px, 80px 80px; opacity: 0.05; animation: geometricMove 20s linear infinite;
+        }
+        @keyframes geometricMove { 0% { transform: translateX(0) translateY(0); } 100% { transform: translateX(60px) translateY(60px); } }
+
+        .art-deco-border { position: relative; }
+        .art-deco-border::before, .art-deco-border::after {
+            content: ''; position: absolute; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            left: 50%; transform: translateX(-50%);
+        }
+        .art-deco-border::before { top: -15px; width: 120px; }
+        .art-deco-border::after { bottom: -15px; width: 80px; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 var(--container-padding); }
+
+        /* Header styles - same as other pages */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px);
+            border-bottom: 2px solid var(--gold); z-index: 1000; transition: var(--transition-smooth);
+        }
+        .header.scrolled { background: rgba(0, 0, 0, 0.98); box-shadow: var(--shadow-dark); }
+
+        .nav { display: flex; align-items: center; justify-content: space-between; height: 90px; position: relative; }
+
+        .logo {
+            font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--gold);
+            text-decoration: none; transition: var(--transition-smooth); position: relative;
+        }
+        .logo::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+            background: var(--gold); transition: var(--transition-smooth);
+        }
+        .logo:hover::after { width: 100%; }
+
+        .nav-menu { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+        .nav-item { position: relative; }
+        .nav-link {
+            font-weight: 500; color: var(--white); text-decoration: none; transition: var(--transition-smooth);
+            position: relative; padding: 0.5rem 1rem; border-radius: var(--border-radius);
+        }
+        .nav-link::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, transparent, var(--gold), transparent); opacity: 0;
+            transform: scaleX(0); transition: var(--transition-smooth); border-radius: var(--border-radius);
+        }
+        .nav-link:hover::before { opacity: 0.1; transform: scaleX(1); }
+        .nav-link:hover { color: var(--gold); transform: translateY(-2px); }
+
+        .dropdown { position: relative; }
+        .dropdown-content {
+            position: absolute; top: 100%; left: 0; background: rgba(0, 0, 0, 0.98); backdrop-filter: blur(20px);
+            border: 2px solid var(--gold); border-radius: var(--border-radius-lg); min-width: 280px;
+            opacity: 0; visibility: hidden; transform: translateY(-10px); transition: var(--transition-smooth);
+            padding: 1rem 0; box-shadow: var(--shadow-heavy); z-index: 1001;
+        }
+        .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-content .nav-link { display: block; padding: 0.75rem 1.5rem; margin: 0; border-radius: 0; font-size: 0.95rem; }
+        .dropdown-content .nav-link:hover { background: rgba(255, 215, 0, 0.1); transform: translateX(10px); }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold)); color: var(--rich-black);
+            padding: 1rem 2rem; border-radius: var(--border-radius-lg); text-decoration: none; font-weight: 600;
+            transition: var(--transition-bounce); border: 2px solid var(--gold); position: relative;
+            overflow: hidden; margin-left: 1rem;
+        }
+        .nav-cta::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.6s ease;
+        }
+        .nav-cta:hover::before { left: 100%; }
+        .nav-cta:hover { transform: translateY(-3px) scale(1.05); box-shadow: var(--shadow-gold); }
+
+        .mobile-menu-btn {
+            display: none; background: none; border: none; color: var(--white); font-size: 1.5rem;
+            cursor: pointer; transition: var(--transition-smooth);
+        }
+        .mobile-menu-btn:hover { color: var(--gold); transform: scale(1.1); }
+
+        .main { margin-top: 90px; }
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--rich-black) 0%, var(--charcoal) 100%);
+            color: var(--white); padding: 8rem 0 6rem; text-align: center; position: relative; overflow: hidden;
+        }
+        .page-hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, var(--gold) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, var(--gold) 1px, transparent 1px);
+            background-size: 100px 100px, 150px 150px; opacity: 0.1; animation: starField 30s linear infinite;
+        }
+        @keyframes starField { 0% { transform: translateX(0) translateY(0) rotate(0deg); } 100% { transform: translateX(100px) translateY(100px) rotate(360deg); } }
+
+        .page-hero-content { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
+        .page-title {
+            font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700;
+            margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--white), var(--gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .page-subtitle {
+            font-size: 1.4rem; opacity: 0.9; max-width: 700px; margin: 0 auto; line-height: 1.6; color: var(--silver);
+        }
+
+        .breadcrumb {
+            padding: 1rem 0; margin-bottom: 2rem; border-bottom: 1px solid var(--dark-gray);
+            font-size: 0.95rem; color: var(--silver);
+        }
+        .breadcrumb a { color: var(--gold); text-decoration: none; transition: var(--transition-smooth); }
+        .breadcrumb a:hover { color: var(--light-gold); }
+        .breadcrumb span { margin: 0 0.5rem; opacity: 0.6; }
+
+        .page-content { padding: 6rem 0; background: var(--charcoal); position: relative; }
+        .content-wrapper { display: grid; grid-template-columns: 2fr 1fr; gap: 5rem; align-items: start; }
+
+        .content-text { font-size: 1.15rem; line-height: 1.8; color: var(--silver); }
+        .content-text h2 {
+            font-family: var(--font-heading); font-size: 2.5rem; color: var(--white);
+            margin: 3rem 0 2rem; position: relative;
+        }
+        .content-text h2::after {
+            content: ''; position: absolute; bottom: -10px; left: 0;
+            width: 80px; height: 3px; background: var(--gold);
+        }
+        .content-text h3 { font-family: var(--font-heading); font-size: 1.8rem; color: var(--gold); margin: 2.5rem 0 1.5rem; }
+        .content-text p { margin-bottom: 1.5rem; }
+        .content-text strong { color: var(--gold); font-weight: 600; }
+        .content-text ul { margin: 1.5rem 0; padding-left: 2rem; }
+        .content-text li { margin-bottom: 0.75rem; color: var(--silver); }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--dark-gray), var(--medium-gray));
+            border: 2px solid var(--gold); border-radius: var(--border-radius-lg);
+            padding: 2.5rem; margin: 3rem 0; position: relative; overflow: hidden;
+        }
+        .highlight-box::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 4px; height: 100%; background: var(--gold);
+        }
+        .highlight-box h3 { color: var(--gold); margin-bottom: 1.5rem; font-size: 1.5rem; }
+        .highlight-box p { color: var(--white); font-size: 1.1rem; line-height: 1.7; }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--dark-gray), var(--medium-gray));
+            padding: 3rem; border-radius: var(--border-radius-lg); border: 2px solid var(--gold);
+            position: sticky; top: 120px; height: fit-content;
+        }
+        .contact-card h3 {
+            font-family: var(--font-heading); font-size: 2rem; color: var(--gold);
+            margin-bottom: 2rem; text-align: center;
+        }
+        .contact-item {
+            display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+            padding: 1rem; background: rgba(255, 215, 0, 0.05);
+            border-radius: var(--border-radius); transition: var(--transition-smooth);
+        }
+        .contact-item:hover { background: rgba(255, 215, 0, 0.1); transform: translateX(5px); }
+        .contact-item i { color: var(--gold); font-size: 1.25rem; width: 24px; text-align: center; }
+        .contact-item-content h4 { font-weight: 600; margin-bottom: 0.25rem; color: var(--white); }
+        .contact-item-content a,
+        .contact-item-content p { color: var(--silver); text-decoration: none; font-weight: 500; transition: var(--transition-smooth); }
+        .contact-item-content a:hover { color: var(--gold); }
+
+        .consultation-btn {
+            width: 100%; background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--rich-black); padding: 1.25rem 2rem; border: none;
+            border-radius: var(--border-radius-lg); font-weight: 600; font-size: 1.1rem;
+            cursor: pointer; transition: var(--transition-bounce); text-decoration: none;
+            display: inline-block; text-align: center; margin-top: 1.5rem;
+        }
+        .consultation-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-gold); }
+
+        .footer {
+            background: var(--deep-black); color: var(--silver); padding: 4rem 0 2rem;
+            position: relative; border-top: 3px solid var(--gold);
+        }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; }
+        .footer-section h4 {
+            color: var(--gold); font-weight: 600; margin-bottom: 1.5rem;
+            font-size: 1.3rem; position: relative;
+        }
+        .footer-section h4::after {
+            content: ''; position: absolute; bottom: -8px; left: 0;
+            width: 40px; height: 2px; background: var(--gold);
+        }
+        .footer-section p, .footer-section a {
+            color: var(--silver); text-decoration: none; line-height: 1.7;
+            transition: var(--transition-smooth); margin-bottom: 0.5rem; display: block;
+        }
+        .footer-section a:hover { color: var(--gold); transform: translateX(5px); }
+        .footer-bottom {
+            border-top: 1px solid var(--dark-gray); padding-top: 2rem;
+            text-align: center; color: var(--light-gray);
+        }
+
+        @media (max-width: 1200px) {
+            .content-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-card { position: static; }
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed; top: 90px; left: -100%; width: 100%; height: calc(100vh - 90px);
+                background: rgba(0, 0, 0, 0.98); backdrop-filter: blur(20px); flex-direction: column;
+                justify-content: flex-start; padding: 3rem 2rem; transition: left 0.4s ease;
+                box-shadow: var(--shadow-heavy); gap: 1rem;
+            }
+            .nav-menu.active { left: 0; }
+            .dropdown-content {
+                position: static; opacity: 1; visibility: visible; transform: none;
+                background: rgba(255, 215, 0, 0.05); border: 1px solid var(--gold);
+                margin-top: 1rem; padding: 1rem;
+            }
+            .mobile-menu-btn { display: block; }
+            .page-hero { padding: 6rem 0 4rem; }
+            .page-content { padding: 4rem 0; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+            :root { --section-padding: 60px; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 1rem; }
+            .contact-card, .highlight-box { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">Seattle Legal Advisor</a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="attorney-profile.html" class="nav-link">Attorney Profile</a></li>
+                <li class="nav-item dropdown">
+                    <a href="practice-areas.html" class="nav-link">Practice Areas</a>
+                    <div class="dropdown-content">
+                        <a href="business-law.html" class="nav-link">Business Law</a>
+                        <a href="contract-law.html" class="nav-link">Contract Law</a>
+                        <a href="corporate-law.html" class="nav-link">Corporate Law</a>
+                        <a href="business-formation.html" class="nav-link">Business Formation</a>
+                        <a href="business-succession-planning.html" class="nav-link">Business Succession Planning</a>
+                        <a href="closely-held-businesses.html" class="nav-link" style="color: var(--gold);">Closely Held Businesses</a>
+                        <a href="mergers-acquisitions.html" class="nav-link">Mergers & Acquisitions</a>
+                        <a href="intellectual-property.html" class="nav-link">Intellectual Property</a>
+                        <a href="entertainment-law.html" class="nav-link">Entertainment Law</a>
+                        <a href="estate-planning.html" class="nav-link">Estate Planning</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="contact-us.html" class="nav-link">Contact Us</a></li>
+                <li class="nav-item"><a href="tel:206-240-0442" class="nav-cta">Call for Free Consultation 206-240-0442</a></li>
+            </ul>
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Page Hero -->
+        <section class="page-hero geometric-bg">
+            <div class="container">
+                <div class="page-hero-content">
+                    <h1 class="page-title art-deco-border">Closely Held Businesses</h1>
+                    <p class="page-subtitle">Strategic legal counsel for private companies and family businesses</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page Content -->
+        <section class="page-content">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="practice-areas.html">Practice Areas</a>
+                    <span>/</span>
+                    <span style="opacity: 0.8;">Closely Held Businesses</span>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="content-text">
+                        <p>Closely held businesses may face many issues, including succession, mergers and acquisitions, buy-sell agreements, tax issues and more. I am dedicated to helping you and your business succeed.</p>
+
+                        <p>I work with founders, family-run companies, and tight-knit teams on succession planning, governance, buy-sell agreements, and long-term strategy. Closely held businesses face unique challenges that require specialized legal counsel tailored to the dynamics of private ownership and close working relationships.</p>
+
+                        <p>At Seattle Legal Advisor, I understand the complexities of closely held businesses—from managing shareholder relationships and planning for ownership transitions to navigating family dynamics and protecting minority interests. Whether you're a family business, partnership, or small corporation with limited shareholders, I provide practical legal solutions that preserve relationships while protecting everyone's interests.</p>
+
+                        <div class="highlight-box">
+                            <h3><i class="fas fa-users"></i> Specialized Private Company Counsel</h3>
+                            <p>Closely held businesses need more than standard corporate advice—they need counsel that understands the unique dynamics of private ownership and close working relationships.</p>
+                        </div>
+
+                        <h2>Understanding Closely Held Businesses</h2>
+                        <p>Closely held businesses are characterized by:</p>
+                        <ul>
+                            <li>Small number of shareholders or owners</li>
+                            <li>Limited or no public trading of shares</li>
+                            <li>Active involvement of owners in management</li>
+                            <li>Family or close personal relationships among owners</li>
+                            <li>Shared control and decision-making</li>
+                            <li>Limited exit opportunities for owners</li>
+                        </ul>
+
+                        <h2>Common Challenges for Closely Held Businesses</h2>
+                        <p>Private companies face unique legal and business challenges that require specialized attention:</p>
+
+                        <h3>Governance & Control Issues</h3>
+                        <ul>
+                            <li>Balancing majority and minority shareholder rights</li>
+                            <li>Decision-making deadlocks and dispute resolution</li>
+                            <li>Board composition and voting arrangements</li>
+                            <li>Management succession and leadership transitions</li>
+                            <li>Compensation and benefit disputes</li>
+                        </ul>
+
+                        <h3>Ownership Transfer Challenges</h3>
+                        <ul>
+                            <li>Valuation difficulties for illiquid shares</li>
+                            <li>Limited market for ownership interests</li>
+                            <li>Transfer restrictions and right of first refusal</li>
+                            <li>Estate planning complications</li>
+                            <li>Tax implications of ownership transfers</li>
+                            <li>Generational wealth transfer planning</li>
+                        </ul>
+
+                        <h3>Family Business Dynamics</h3>
+                        <ul>
+                            <li>Mixing family and business relationships</li>
+                            <li>Employment of family members</li>
+                            <li>Fairness between active and inactive family owners</li>
+                            <li>Next-generation preparation and involvement</li>
+                            <li>Conflict resolution between family members</li>
+                        </ul>
+
+                        <h2>Legal Solutions for Closely Held Businesses</h2>
+                        <p>I help closely held businesses address their unique challenges through comprehensive legal planning and documentation:</p>
+
+                        <h3>Buy-Sell Agreements</h3>
+                        <p>Well-drafted buy-sell agreements are essential for closely held businesses:</p>
+                        <ul>
+                            <li>Triggering events: death, disability, retirement, termination</li>
+                            <li>Valuation methods and dispute resolution</li>
+                            <li>Payment terms and financing arrangements</li>
+                            <li>Transfer restrictions and approval processes</li>
+                            <li>Tag-along and drag-along rights</li>
+                            <li>Non-compete and confidentiality provisions</li>
+                        </ul>
+
+                        <h3>Shareholder Agreements</h3>
+                        <p>Comprehensive shareholder agreements protect all parties:</p>
+                        <ul>
+                            <li>Voting agreements and control provisions</li>
+                            <li>Board composition and representation rights</li>
+                            <li>Information rights and inspection privileges</li>
+                            <li>Dividend and distribution policies</li>
+                            <li>Preemptive rights and anti-dilution protection</li>
+                            <li>Deadlock resolution mechanisms</li>
+                        </ul>
+
+                        <h3>Employment and Compensation Issues</h3>
+                        <p>Managing owner-employees requires careful legal structuring:</p>
+                        <ul>
+                            <li>Employment agreements for owner-managers</li>
+                            <li>Compensation and benefit arrangements</li>
+                            <li>Performance standards and accountability</li>
+                            <li>Termination procedures and severance</li>
+                            <li>Non-compete and non-solicitation agreements</li>
+                            <li>Equity compensation and incentive plans</li>
+                        </ul>
+
+                        <h2>Minority Shareholder Protection</h2>
+                        <p>Minority shareholders in closely held businesses need special protection:</p>
+                        <ul>
+                            <li><strong>Oppression Claims:</strong> Protection against majority squeeze-out tactics</li>
+                            <li><strong>Information Rights:</strong> Access to financial and operational information</li>
+                            <li><strong>Tag-Along Rights:</strong> Ability to sell alongside majority shareholders</li>
+                            <li><strong>Appraisal Rights:</strong> Fair valuation in certain transactions</li>
+                            <li><strong>Liquidity Options:</strong> Mechanisms for exiting the investment</li>
+                            <li><strong>Board Representation:</strong> Voice in company governance</li>
+                        </ul>
+
+                        <h2>Business Valuation Issues</h2>
+                        <p>Valuing closely held businesses presents unique challenges:</p>
+                        <ul>
+                            <li>Lack of market comparables and trading history</li>
+                            <li>Discounts for lack of marketability and control</li>
+                            <li>Key person dependency and business risk factors</li>
+                            <li>Asset vs. income valuation approaches</li>
+                            <li>Professional appraisal requirements</li>
+                            <li>Dispute resolution for valuation disagreements</li>
+                        </ul>
+
+                        <h2>Tax Planning for Closely Held Businesses</h2>
+                        <p>Private companies have unique tax planning opportunities and challenges:</p>
+                        <ul>
+                            <li><strong>S Corporation Elections:</strong> Pass-through taxation benefits</li>
+                            <li><strong>Section 1202 Stock:</strong> Qualified small business stock exclusions</li>
+                            <li><strong>Estate and Gift Tax Planning:</strong> Valuation discounts and transfer strategies</li>
+                            <li><strong>Buy-Sell Agreement Tax Issues:</strong> Ensuring tax-efficient transfers</li>
+                            <li><strong>Compensation Planning:</strong> Optimizing salary vs. distribution mix</li>
+                            <li><strong>Succession Tax Planning:</strong> Minimizing transfer taxes</li>
+                        </ul>
+
+                        <h2>Dispute Prevention and Resolution</h2>
+                        <p>Preventing and resolving disputes is crucial for closely held businesses:</p>
+                        <ul>
+                            <li><strong>Clear Governance Documents:</strong> Detailed operating procedures</li>
+                            <li><strong>Communication Protocols:</strong> Regular meetings and reporting</li>
+                            <li><strong>Mediation and Arbitration:</strong> Alternative dispute resolution</li>
+                            <li><strong>Exit Mechanisms:</strong> Voluntary separation procedures</li>
+                            <li><strong>Professional Facilitation:</strong> Business coaching and family counseling</li>
+                            <li><strong>Legal Intervention:</strong> Court remedies when necessary</li>
+                        </ul>
+
+                        <h2>Growth and Investment Considerations</h2>
+                        <p>Closely held businesses planning for growth need specialized counsel:</p>
+                        <ul>
+                            <li>Raising capital while maintaining control</li>
+                            <li>Bringing in new investors or partners</li>
+                            <li>Professional management recruitment</li>
+                            <li>Board of advisors development</li>
+                            <li>Exit strategy planning and preparation</li>
+                            <li>Strategic alliance and joint venture structures</li>
+                        </ul>
+
+                        <h2>Family Business Succession</h2>
+                        <p>Transferring family businesses to the next generation requires careful planning:</p>
+                        <ul>
+                            <li>Next-generation development and training</li>
+                            <li>Fair treatment of all family members</li>
+                            <li>Active vs. passive ownership structures</li>
+                            <li>Employment policies for family members</li>
+                            <li>Governance evolution as the business grows</li>
+                            <li>Family constitution and mission development</li>
+                        </ul>
+
+                        <div class="highlight-box">
+                            <h3><i class="fas fa-handshake"></i> Preserve Relationships, Protect Interests</h3>
+                            <p>Don't let business disputes destroy valuable relationships and enterprises. Call 206-240-0442 or contact me online to discuss how I can help your closely held business navigate its unique challenges.</p>
+                        </div>
+                    </div>
+
+                    <aside class="contact-card">
+                        <h3>Closely Held Business Help</h3>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-item-content">
+                                <h4>Phone</h4>
+                                <a href="tel:206-240-0442">206-240-0442</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-item-content">
+                                <h4>Email</h4>
+                                <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-item-content">
+                                <h4>Serving</h4>
+                                <p>Seattle, King County<br>& Washington State</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="contact-item-content">
+                                <h4>Response Time</h4>
+                                <p>Within 24 hours</p>
+                            </div>
+                        </div>
+
+                        <a href="contact-us.html" class="consultation-btn">
+                            <i class="fas fa-calendar-check"></i>
+                            Schedule Free Consultation
+                        </a>
+
+                        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--dark-gray);">
+                            <h4 style="color: var(--gold); margin-bottom: 1rem; font-size: 1.1rem;">Private Company Issues</h4>
+                            <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+                                <li style="margin-bottom: 0.5rem; color: var(--silver);">• Buy-Sell Agreements</li>
+                                <li style="margin-bottom: 0.5rem; color: var(--silver);">• Shareholder Disputes</li>
+                                <li style="margin-bottom: 0.5rem; color: var(--silver);">• Family Business Issues</li>
+                                <li style="margin-bottom: 0.5rem; color: var(--silver);">• Succession Planning</li>
+                                <li style="margin-bottom: 0.5rem; color: var(--silver);">• Minority Protection</li>
+                                <li style="margin-bottom: 0.5rem; color: var(--silver);">• Tax Planning</li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Seattle Legal Advisor</h4>
+                    <p>Scott M. Haapala PLLC</p>
+                    <p>Straightforward Legal Advice for Businesses, Creatives, and Entrepreneurs in Washington State</p>
+                    <p style="margin-top: 1.5rem;">
+                        <strong>Ethical. Knowledgeable. Proactive.</strong><br>
+                        Business Law and Intellectual Property Attorney
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Practice Areas</h4>
+                    <a href="contract-law.html">Contract Law</a>
+                    <a href="business-formation.html">Business Formation</a>
+                    <a href="corporate-law.html">Corporate Law</a>
+                    <a href="mergers-acquisitions.html">Mergers & Acquisitions</a>
+                    <a href="intellectual-property.html">Intellectual Property</a>
+                    <a href="entertainment-law.html">Entertainment Law</a>
+                    <a href="estate-planning.html">Estate Planning</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Information</h4>
+                    <a href="tel:206-240-0442">206-240-0442</a>
+                    <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
+                    <p>12036 26th Ave South<br>Seattle, WA 98168</p>
+                    <p>Licensed in WA, DC, MD</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seattle Legal Advisor - Scott M. Haapala PLLC. All rights reserved.</p>
+                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">
+                    Attorney Advertising. Prior results do not guarantee similar outcomes.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Standard navigation and initialization code
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        function closeMobileMenu() {
+            if (navMenu) {
+                navMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            }
+        }
+
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    closeMobileMenu();
+                }
+            });
+        }
+
+        const header = document.getElementById('header');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.8s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        console.log('Seattle Legal Advisor - Closely Held Businesses page initialized successfully!');
+    </script>
+</body>
+</html>
