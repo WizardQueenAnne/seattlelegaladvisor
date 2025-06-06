@@ -1538,7 +1538,7 @@
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-envelope"></i>
-                                <a href="mailto:sh@haapala.us">sh@haapala.us</a>
+                                <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -1562,7 +1562,7 @@
             </div>
 
             <div class="services-grid">
-                <div class="service-card animate-on-scroll" onclick="window.location.href='templates/contract-law.html'">
+                <div class="service-card animate-on-scroll" data-href="contract-law.html">
                     <div class="service-icon">
                         <i class="fas fa-file-contract"></i>
                     </div>
@@ -1572,7 +1572,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" onclick="window.location.href='templates/business-formation.html'">
+                <div class="service-card animate-on-scroll" data-href="business-formation.html">
                     <div class="service-icon">
                         <i class="fas fa-building"></i>
                     </div>
@@ -1582,7 +1582,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" onclick="window.location.href='templates/business-law.html'">
+                <div class="service-card animate-on-scroll" data-href="business-law.html">
                     <div class="service-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
@@ -1592,7 +1592,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" onclick="window.location.href='templates/mergers-acquisitions.html'">
+                <div class="service-card animate-on-scroll" data-href="mergers-acquisitions.html">
                     <div class="service-icon">
                         <i class="fas fa-exchange-alt"></i>
                     </div>
@@ -1602,7 +1602,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" onclick="window.location.href='templates/business-succession-planning.html'">
+                <div class="service-card animate-on-scroll" data-href="business-succession-planning.html">
                     <div class="service-icon">
                         <i class="fas fa-route"></i>
                     </div>
@@ -1612,7 +1612,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" onclick="window.location.href='templates/intellectual-property.html'">
+                <div class="service-card animate-on-scroll" data-href="intellectual-property.html">
                     <div class="service-icon">
                         <i class="fas fa-lightbulb"></i>
                     </div>
@@ -1622,7 +1622,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" onclick="window.location.href='templates/entertainment-law.html'">
+                <div class="service-card animate-on-scroll" data-href="entertainment-law.html">
                     <div class="service-icon">
                         <i class="fas fa-music"></i>
                     </div>
@@ -1632,7 +1632,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" onclick="window.location.href='templates/estate-planning.html'">
+                <div class="service-card animate-on-scroll" data-href="estate-planning.html">
                     <div class="service-icon">
                         <i class="fas fa-balance-scale"></i>
                     </div>
@@ -1674,7 +1674,7 @@
                     </div>
                     <div class="credential">
                         <h4>Licensed In</h4>
-                        <p>DC, Maryland, Washington</p>
+                        <p>Washington, DC, Maryland</p>
                     </div>
                 </div>
             </div>
@@ -1704,7 +1704,7 @@
                             <i class="fas fa-envelope"></i>
                             <div class="contact-detail-content">
                                 <h4>Email</h4>
-                                <a href="mailto:sh@haapala.us">sh@haapala.us</a>
+                                <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
                             </div>
                         </div>
 
@@ -1823,19 +1823,19 @@
 
                 <div class="footer-section">
                     <h4>Practice Areas</h4>
-                    <a href="templates/contract-law.html">Contract Law</a>
-                    <a href="templates/business-formation.html">Business Formation</a>
-                    <a href="templates/corporate-law.html">Corporate Law</a>
-                    <a href="templates/mergers-acquisitions.html">Mergers & Acquisitions</a>
-                    <a href="templates/intellectual-property.html">Intellectual Property</a>
-                    <a href="templates/entertainment-law.html">Entertainment Law</a>
-                    <a href="templates/estate-planning.html">Estate Planning</a>
+                    <a href="contract-law.html">Contract Law</a>
+                    <a href="business-formation.html">Business Formation</a>
+                    <a href="corporate-law.html">Corporate Law</a>
+                    <a href="mergers-acquisitions.html">Mergers & Acquisitions</a>
+                    <a href="intellectual-property.html">Intellectual Property</a>
+                    <a href="entertainment-law.html">Entertainment Law</a>
+                    <a href="estate-planning.html">Estate Planning</a>
                 </div>
 
                 <div class="footer-section">
                     <h4>Contact Information</h4>
                     <span class="phone-display">206-240-0442</span>
-                    <a href="mailto:sh@haapala.us">sh@haapala.us</a>
+                    <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
                     <p>Licensed in WA, DC, MD</p>
                     <p>Serving Washington State</p>
                 </div>
@@ -2156,6 +2156,27 @@
                 card.style.transform = 'translateY(-10px) scale(1.02)';
                 card.style.boxShadow = 'var(--shadow-heavy)';
             });
+
+            // Add click event listener to handle navigation properly
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Get the data-href attribute value
+                const url = card.getAttribute('data-href');
+                if (url) {
+                    console.log('Navigating to:', url);
+                    
+                    // Try different navigation methods
+                    try {
+                        window.location.href = url;
+                    } catch (error) {
+                        console.error('Navigation error:', error);
+                        // Fallback method
+                        window.open(url, '_self');
+                    }
+                }
+            });
         });
 
         // Phone number formatting
@@ -2253,7 +2274,15 @@
 
             // Enter key on service cards navigates to page
             if (e.key === 'Enter' && e.target.classList.contains('service-card')) {
-                e.target.click();
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Get the data-href attribute value
+                const url = e.target.getAttribute('data-href');
+                if (url) {
+                    console.log('Keyboard navigating to:', url);
+                    window.location.href = url;
+                }
             }
         });
 
