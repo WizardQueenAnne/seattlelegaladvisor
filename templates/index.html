@@ -340,7 +340,7 @@
             background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
             color: var(--deep-navy);
             border: 2px solid var(--primary-gold);
-            cursor: pointer;
+            cursor: default;
         }
 
         .btn-primary::before {
@@ -1562,7 +1562,7 @@
             </div>
 
             <div class="services-grid">
-                <div class="service-card animate-on-scroll" data-href="contract-law.html">
+                <div class="service-card animate-on-scroll" onclick="window.location.href='contract-law.html';">
                     <div class="service-icon">
                         <i class="fas fa-file-contract"></i>
                     </div>
@@ -1572,7 +1572,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" data-href="business-formation.html">
+                <div class="service-card animate-on-scroll" onclick="window.location.href='business-formation.html';">
                     <div class="service-icon">
                         <i class="fas fa-building"></i>
                     </div>
@@ -1582,7 +1582,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" data-href="business-law.html">
+                <div class="service-card animate-on-scroll" onclick="window.location.href='business-law.html';">
                     <div class="service-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
@@ -1592,7 +1592,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" data-href="mergers-acquisitions.html">
+                <div class="service-card animate-on-scroll" onclick="window.location.href='mergers-acquisitions.html';">
                     <div class="service-icon">
                         <i class="fas fa-exchange-alt"></i>
                     </div>
@@ -1602,7 +1602,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" data-href="business-succession-planning.html">
+                <div class="service-card animate-on-scroll" onclick="window.location.href='business-succession-planning.html';">
                     <div class="service-icon">
                         <i class="fas fa-route"></i>
                     </div>
@@ -1612,7 +1612,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" data-href="intellectual-property.html">
+                <div class="service-card animate-on-scroll" onclick="window.location.href='intellectual-property.html';">
                     <div class="service-icon">
                         <i class="fas fa-lightbulb"></i>
                     </div>
@@ -1622,7 +1622,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" data-href="entertainment-law.html">
+                <div class="service-card animate-on-scroll" onclick="window.location.href='entertainment-law.html';">
                     <div class="service-icon">
                         <i class="fas fa-music"></i>
                     </div>
@@ -1632,7 +1632,7 @@
                     </p>
                 </div>
 
-                <div class="service-card animate-on-scroll" data-href="estate-planning.html">
+                <div class="service-card animate-on-scroll" onclick="window.location.href='estate-planning.html';">
                     <div class="service-icon">
                         <i class="fas fa-balance-scale"></i>
                     </div>
@@ -2140,7 +2140,7 @@
             }, 8000);
         }
 
-        // Enhanced service card interactions - make them clickable
+        // Enhanced service card interactions - make them clickable and navigate to specific pages
         const serviceCards = document.querySelectorAll('.service-card');
         serviceCards.forEach((card, index) => {
             // Stagger animation delays
@@ -2157,26 +2157,8 @@
                 card.style.boxShadow = 'var(--shadow-heavy)';
             });
 
-            // Add click event listener to handle navigation properly
-            card.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Get the data-href attribute value
-                const url = card.getAttribute('data-href');
-                if (url) {
-                    console.log('Navigating to:', url);
-                    
-                    // Try different navigation methods
-                    try {
-                        window.location.href = url;
-                    } catch (error) {
-                        console.error('Navigation error:', error);
-                        // Fallback method
-                        window.open(url, '_self');
-                    }
-                }
-            });
+            // Make the entire card clickable
+            card.style.cursor = 'pointer';
         });
 
         // Phone number formatting
@@ -2274,15 +2256,7 @@
 
             // Enter key on service cards navigates to page
             if (e.key === 'Enter' && e.target.classList.contains('service-card')) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Get the data-href attribute value
-                const url = e.target.getAttribute('data-href');
-                if (url) {
-                    console.log('Keyboard navigating to:', url);
-                    window.location.href = url;
-                }
+                e.target.click();
             }
         });
 
