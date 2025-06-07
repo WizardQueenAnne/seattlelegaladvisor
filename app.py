@@ -20,6 +20,60 @@ logger = logging.getLogger(__name__)
 def index():
     return render_template('index.html')
 
+# Practice Area Routes
+@app.route('/contract-law.html')
+def contract_law():
+    return render_template('contract-law.html')
+
+@app.route('/business-formation.html')
+def business_formation():
+    return render_template('business-formation.html')
+
+@app.route('/business-law.html')
+def business_law():
+    return render_template('business-law.html')
+
+@app.route('/corporate-law.html')
+def corporate_law():
+    return render_template('corporate-law.html')
+
+@app.route('/mergers-acquisitions.html')
+def mergers_acquisitions():
+    return render_template('mergers-acquisitions.html')
+
+@app.route('/business-succession-planning.html')
+def business_succession_planning():
+    return render_template('business-succession-planning.html')
+
+@app.route('/closely-held-businesses.html')
+def closely_held_businesses():
+    return render_template('closely-held-businesses.html')
+
+@app.route('/intellectual-property.html')
+def intellectual_property():
+    return render_template('intellectual-property.html')
+
+@app.route('/entertainment-law.html')
+def entertainment_law():
+    return render_template('entertainment-law.html')
+
+@app.route('/estate-planning.html')
+def estate_planning():
+    return render_template('estate-planning.html')
+
+@app.route('/practice-areas.html')
+def practice_areas():
+    return render_template('practice-areas.html')
+
+# Additional Page Routes
+@app.route('/attorney-profile.html')
+def attorney_profile():
+    return render_template('attorney-profile.html')
+
+@app.route('/contact-us.html')
+def contact_us():
+    return render_template('contact-us.html')
+
 @app.route('/contact', methods=['POST'])
 def contact():
     try:
